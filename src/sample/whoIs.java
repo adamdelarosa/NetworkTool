@@ -19,6 +19,7 @@ public class whoIs {
             result.append(whoisData1);
             whois.disconnect();
 
+
         } catch (SocketException e){
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Error");
@@ -36,5 +37,8 @@ public class whoIs {
             e.printStackTrace();
         }
         return result.toString();
+    }
+    public whoIs(){
+        new traceRoute();
     }
 }
