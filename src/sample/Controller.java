@@ -1,41 +1,27 @@
 package sample;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.web.WebView;
-import sun.net.www.URLConnection;
-import javafx.scene.web.WebEngine;
-
 import java.net.InetAddress;
-import java.net.URL;
 import java.net.UnknownHostException;
-import java.awt.Desktop.Action;
 import java.net.URI;
-import java.util.ResourceBundle;
-
 
 public class Controller implements EventHandler<ActionEvent> {
 
 
-    @FXML
-    private TextField address;
-    @FXML
-    private Label ip, hostname;
-    @FXML
-    private TextArea whoText;
-    @FXML
-    private Hyperlink link;
-    @FXML
-    private MenuBar menuBar;
-
-    whoIs who = new whoIs();
+    @FXML private TextField address;
+    @FXML private Label ip, hostname;
+    @FXML private TextArea whoText;
+    @FXML private TextField traceField;
+    @FXML private TextArea traceArea;
 
 
-    public void handle(ActionEvent event) {
+
+
+    public void handle(ActionEvent eventWhoIs) {
+        whoIs who = new whoIs();
         System.setProperty("apple.laf.useScreenMenuBar", "true");
 
         String text = address.getText();
@@ -48,6 +34,7 @@ public class Controller implements EventHandler<ActionEvent> {
             ip.setText(address.getCanonicalHostName());
             hostname.setText(address.getHostName());
             whoText.setText(who.getWhois(text));
+
         } catch (UnknownHostException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Wrong Input");
@@ -56,6 +43,14 @@ public class Controller implements EventHandler<ActionEvent> {
 
             alert.showAndWait();
         }
+        ///traceRoute
+    }
+    public void traceButton(ActionEvent eventTrace) throws UnknownHostException {
+        String routeAns = traceField.getText();
+        traceRoute trace = new traceRoute();
+        trace.traceObject(routeAns);
+        traceArea.setText("hello");
+        traceArea.setText(trace.traceObject(routeAns));
     }
 
 
