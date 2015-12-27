@@ -43,7 +43,6 @@ public class Controller implements EventHandler<ActionEvent> {
             alert.setTitle("Wrong Input");
             alert.setHeaderText("Wrong input");
             alert.setContentText("Please insert a valid Address or IP.");
-
             alert.showAndWait();
         }
         ///traceRoute
@@ -53,15 +52,6 @@ public class Controller implements EventHandler<ActionEvent> {
         String routeValue = traceField.getText();
         Thread trace = new Thread(new ping("one",routeValue));
         trace.start();
-
-
-
-
-
-
-
-
-
 
 
 
