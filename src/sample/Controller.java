@@ -4,6 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.net.URI;
@@ -15,7 +19,7 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML private Label ip, hostname;
     @FXML private TextArea whoText;
     @FXML private TextField traceField;
-    @FXML private TextArea traceArea;
+    @FXML public  TextArea traceArea;
 
 
 
@@ -28,8 +32,7 @@ public class Controller implements EventHandler<ActionEvent> {
 
         InetAddress address = null;
         try {
-            address = InetAddress.getByName
-                    (text);
+            address = InetAddress.getByName(text);
 
             ip.setText(address.getCanonicalHostName());
             hostname.setText(address.getHostName());
@@ -45,13 +48,18 @@ public class Controller implements EventHandler<ActionEvent> {
         }
         ///traceRoute
     }
+
     public void traceButton(ActionEvent eventTrace) throws UnknownHostException {
-        String routeAns = traceField.getText();
         traceRoute trace = new traceRoute();
-        trace.traceObject(routeAns);
-        traceArea.setText("hello");
-        traceArea.setText(trace.traceObject(routeAns));
+        String routeAns = traceField.getText();
+        traceArea.setText(trace.test());
+        trace.traceObject();
+
+
+
+
     }
+
 
 
     public void link(ActionEvent event) throws Exception {
@@ -59,4 +67,6 @@ public class Controller implements EventHandler<ActionEvent> {
             java.awt.Desktop.getDesktop().browse(new URI("http://www.adamdelarosa.com"));
         }
     }
+
+
 }

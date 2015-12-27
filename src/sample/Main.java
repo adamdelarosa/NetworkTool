@@ -1,5 +1,6 @@
 package sample;
-
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
