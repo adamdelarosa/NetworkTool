@@ -18,7 +18,8 @@ public class traceRoute extends Controller {
             while ((inputLine = in.readLine()) != null) {
                 System.out.println(inputLine);
                 result += inputLine;
-                traceArea.appendText();
+
+
 
             }
             in.close();

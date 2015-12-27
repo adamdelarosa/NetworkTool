@@ -50,10 +50,17 @@ public class Controller implements EventHandler<ActionEvent> {
     }
 
     public void traceButton(ActionEvent eventTrace) throws UnknownHostException {
-        traceRoute trace = new traceRoute();
-        String routeAns = traceField.getText();
-        traceArea.setText(trace.test());
-        trace.traceObject();
+        String routeValue = traceField.getText();
+        Thread trace = new Thread(new ping("one",routeValue));
+        trace.start();
+
+
+
+
+
+
+
+
 
 
 
