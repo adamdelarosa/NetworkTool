@@ -39,6 +39,6 @@ public class whoIs {
         return result.toString();
     }
     public whoIs(){
-        new traceRoute();
+       return;
     }
 }

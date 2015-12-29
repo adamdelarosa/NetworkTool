@@ -5,12 +5,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.net.URI;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Controller implements EventHandler<ActionEvent> {
 
@@ -45,20 +44,27 @@ public class Controller implements EventHandler<ActionEvent> {
             alert.setContentText("Please insert a valid Address or IP.");
             alert.showAndWait();
         }
-        ///traceRoute
     }
 
     public void traceButton(ActionEvent eventTrace) throws UnknownHostException {
-        String routeValue = traceField.getText();
-        Thread trace = new Thread(new ping("one",routeValue));
-        trace.start();
+        traceRoute trace = new traceRoute();
+        trace.run();
+        traceArea.setText("Check...");
+        new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        traceArea.appendText(trace.enjoy());
+                    }
+                }, 999);
+
+        traceArea.setText(trace.enjoy());
+        String traceData = trace.enjoy();
+
 
 
 
     }
-
-
-
     public void link(ActionEvent event) throws Exception {
         {
             java.awt.Desktop.getDesktop().browse(new URI("http://www.adamdelarosa.com"));

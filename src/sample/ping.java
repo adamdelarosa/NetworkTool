@@ -2,12 +2,11 @@ package sample;
 
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
 //Runnable interface contains run() method
-public class ping implements Runnable{
+public class ping implements Runnable {
 
     public String inputLine;
     public String traceName;
@@ -15,15 +14,11 @@ public class ping implements Runnable{
     int time;
     Random r = new Random();
 
-    public ping (String x, String traceName){
+    public ping() {
         traceName = null;
-        name = x;
+        name = "x";
         time = r.nextInt(999); //between 0-1 second
     }
-
-
-
-
 
     //this runs when you start thread
     Thread t1 = new Thread() {
@@ -32,8 +27,6 @@ public class ping implements Runnable{
 
             String result = null;
             try {
-
-
                 Runtime r = Runtime.getRuntime();
                 Process p = r.exec("traceroute " + "8.8.8.8");
                 BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
@@ -59,23 +52,22 @@ public class ping implements Runnable{
 
         }
     };
-    Thread t2 = new Thread(){
+    Thread t2 = new Thread() {
         public void run() {
             String result = null;
 
-                try {
-                    while (inputLine != null) {
-                        System.out.println(inputLine);
-                        Controller threadIn = new Controller();
-                        threadIn.traceArea.setText(inputLine);
+            try {
+                while (inputLine != null) {
+                    System.out.println(inputLine);
+                    Controller threadIn = new Controller();
+                    threadIn.traceArea.setText(inputLine);
+                }
+                System.out.println("hello!1");
+                Thread.sleep(1000);
 
 
-                    }
-                    System.out.println("hello!1");
-                    Thread.sleep(1000);
-
-
-                } catch (Exception e) {}
+            } catch (Exception e) {
+            }
         }
     };
 
@@ -83,11 +75,5 @@ public class ping implements Runnable{
     public void run() {
         t1.start();
         t2.start();
-
-
-
-
-
-
     }
 }
