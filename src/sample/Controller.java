@@ -1,10 +1,14 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.net.URI;
@@ -47,19 +51,7 @@ public class Controller implements EventHandler<ActionEvent> {
     }
 
     public void traceButton(ActionEvent eventTrace) throws UnknownHostException {
-        traceRoute trace = new traceRoute();
-        trace.run();
-        traceArea.setText("Check...");
-        new Timer().schedule(
-                new TimerTask() {
-                    @Override
-                    public void run() {
-                        traceArea.appendText(trace.enjoy());
-                    }
-                }, 5000);
-
-        traceArea.setText(trace.enjoy());
-        String traceData = trace.enjoy();
+        t1.start();
 
 
 
@@ -70,6 +62,27 @@ public class Controller implements EventHandler<ActionEvent> {
             java.awt.Desktop.getDesktop().browse(new URI("http://www.adamdelarosa.com"));
         }
     }
+
+
+
+    public String inputLine;
+    Thread t1 = new Thread() {
+
+        public void run() {
+
+            try {
+                Runtime r = Runtime.getRuntime();
+                Process p = r.exec("traceroute " + "8.8.8.8");
+                BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                while ((inputLine = in.readLine()) != null) {
+                    traceArea.appendText(inputLine);
+                    traceArea.appendText("\n");
+                    System.out.println(inputLine);
+                }
+                in.close();
+            } catch (Exception e) {}
+        }
+    };
 
 
 }
