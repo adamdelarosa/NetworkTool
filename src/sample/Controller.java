@@ -50,11 +50,12 @@ public class Controller implements EventHandler<ActionEvent> {
         }
     }
 
-    public void traceButton(ActionEvent eventTrace) throws UnknownHostException {
-        t1.start();
-
-
-
+    public void traceButton(){
+        traceRoute trace = new traceRoute();
+        System.out.print("sa");
+        //trace.t1.start();
+    }
+    public void pingButton(){
 
     }
     public void link(ActionEvent event) throws Exception {
@@ -65,24 +66,7 @@ public class Controller implements EventHandler<ActionEvent> {
 
 
 
-    public String inputLine;
-    Thread t1 = new Thread() {
 
-        public void run() {
-
-            try {
-                Runtime r = Runtime.getRuntime();
-                Process p = r.exec("traceroute " + "8.8.8.8");
-                BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                while ((inputLine = in.readLine()) != null) {
-                    traceArea.appendText(inputLine);
-                    traceArea.appendText("\n");
-                    System.out.println(inputLine);
-                }
-                in.close();
-            } catch (Exception e) {}
-        }
-    };
 
 
 }
