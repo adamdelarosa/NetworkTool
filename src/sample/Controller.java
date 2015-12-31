@@ -56,7 +56,7 @@ public class Controller implements EventHandler<ActionEvent> {
                     public void run() {
                         traceArea.appendText(trace.enjoy());
                     }
-                }, 999);
+                }, 5000);
 
         traceArea.setText(trace.enjoy());
         String traceData = trace.enjoy();
