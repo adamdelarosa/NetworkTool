@@ -10,6 +10,7 @@ public class whoIs {
     public String getWhois(String domainName) {
 
 
+
         StringBuilder result = new StringBuilder("");
 
         WhoisClient whois = new WhoisClient();
