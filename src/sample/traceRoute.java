@@ -5,25 +5,28 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
 
 import java.awt.*;
+import java.awt.TextArea;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class traceRoute  {
 
+    private Controller iText;
 
-
-    Controller con = new Controller();
-
-    public traceRoute(){
-        hello();
+    public traceRoute(Controller ta){
+        iText = ta;
     }
 
-    public int hello(){
+    public void setText(){
+        System.out.print("Hello");
+        iText.setText("HEllo2");
 
-        return 0;
     }
+
+
 
 
 

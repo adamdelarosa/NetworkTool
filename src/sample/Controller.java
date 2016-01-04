@@ -51,9 +51,9 @@ public class Controller implements EventHandler<ActionEvent> {
     }
 
     public void traceButton(){
-        traceRoute trace = new traceRoute();
-        System.out.print("sa");
-        //trace.t1.start();
+        traceArea.setText("Hello");
+        traceRoute trace = new traceRoute(this);
+        trace.setText();
     }
     public void pingButton(){
 
@@ -63,9 +63,6 @@ public class Controller implements EventHandler<ActionEvent> {
             java.awt.Desktop.getDesktop().browse(new URI("http://www.adamdelarosa.com"));
         }
     }
-
-
-
 
 
 

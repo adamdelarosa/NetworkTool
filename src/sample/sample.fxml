@@ -56,7 +56,7 @@
                                  </font>
                               </Label>
                               <Label layoutX="22.0" layoutY="63.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
-                              <TextArea fx:id="newTextArea" editable="false" layoutX="11.0" layoutY="137.0" prefHeight="269.0" prefWidth="553.0" />
+                              <TextArea fx:id="traceArea" editable="false" layoutX="11.0" layoutY="137.0" prefHeight="269.0" prefWidth="553.0" />
                               <TextField fx:id="traceField" layoutX="122.0" layoutY="58.0" prefHeight="26.0" prefWidth="279.0" />
                               <Button layoutX="425.0" layoutY="58.0" mnemonicParsing="false" onAction="#traceButton" prefHeight="26.0" prefWidth="112.0" text="Trace" />
                               <Hyperlink layoutX="231.0" layoutY="401.0" onAction="#link" text="©AdamDelarosa" />
