@@ -1,50 +1,45 @@
 package sample;
 
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class traceRoute  {
+public class traceRoute extends Controller {
+
+
+    @FXML
+    private Controller textOutTrace;
 
 
 
-    Controller con = new Controller();
-
-    public traceRoute(){
-        hello();
+    public traceRoute(Controller ta) {
+        textOutTrace = ta;
     }
-
-    public int hello(){
-
-        return 0;
-    }
-
-
-
-/*    Controller con = new Controller();
 
     public String inputLine;
-    Thread t1 = new Thread() {
 
-        public void run() {
+    public void changeText(Controller ta,String traceIp) {
 
-            try {
-                Runtime r = Runtime.getRuntime();
-                Process p = r.exec("traceroute " + "8.8.8.8");
-                BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-                while ((inputLine = in.readLine()) != null) {
-                    con.traceArea.appendText(inputLine);
-                    con.traceArea.appendText("\n");
-                    System.out.println(inputLine);
+        Thread t1 = new Thread() {
+            public void run() {
+                try {
+                    Runtime r = Runtime.getRuntime();
+                    Process p = r.exec("traceroute " + traceIp);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                    while ((inputLine = in.readLine()) != null) {
+                        textOutTrace.traceArea.appendText(inputLine);
+                        textOutTrace.traceArea.appendText("\n");
+                        System.out.print(inputLine);
+                        System.out.print("\n");
+                    }
+                    in.close();
+                } catch (Exception e) {
                 }
-                in.close();
-            } catch (Exception e) {}
-        }
-    };*/
+            }
+        };
+        t1.start();
+    }
 }
+
+
+

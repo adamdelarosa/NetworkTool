@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -13,19 +14,9 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ping  implements Initializable {
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+public class ping {
 
-    }
-
-
-
-
-
-
-
-/*    Controller con = new Controller();
+    Controller con = new Controller();
 
     public String inputLine;
     Thread t1 = new Thread() {
@@ -44,5 +35,5 @@ public class ping  implements Initializable {
                 in.close();
             } catch (Exception e) {}
         }
-    };*/
+    };
 }

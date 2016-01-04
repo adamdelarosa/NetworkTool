@@ -5,9 +5,14 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -18,12 +23,20 @@ import java.util.TimerTask;
 public class Controller implements EventHandler<ActionEvent> {
 
 
-    @FXML private TextField address;
-    @FXML private Label ip, hostname;
-    @FXML private TextArea whoText;
-    @FXML private TextField traceField;
-    @FXML public  TextArea traceArea;
-
+    @FXML
+    private TextField address;
+    @FXML
+    private Label ip, hostname;
+    @FXML
+    private TextArea whoText;
+    @FXML
+    private TextField traceField;
+    @FXML
+    public TextArea traceArea;
+    @FXML
+    private TextField traceIp;
+    @FXML
+    public TextArea pingArea;
 
 
 
@@ -50,23 +63,47 @@ public class Controller implements EventHandler<ActionEvent> {
         }
     }
 
-    public void traceButton(){
-        traceRoute trace = new traceRoute();
-        System.out.print("sa");
-        //trace.t1.start();
-    }
-    public void pingButton(){
+
+    public void traceButton() {
+        String text = traceIp.getText();
+        traceRoute trace = new traceRoute(this);
+        trace.changeText(this,text);
+
+
 
     }
+
+    public String pingInput;
+
+    public void pingButton() {
+
+            Thread t1 = new Thread() {
+
+
+                public void run() {
+
+                    try {
+                        Runtime r = Runtime.getRuntime();
+                        Process p = r.exec("ping " + "8.8.8.8");
+                        BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+                        while ((pingInput = in.readLine()) != null) {
+                            pingArea.appendText(pingInput);
+                            pingArea.appendText("\n");
+                            System.out.println(pingInput);
+                        }
+                        in.close();
+                    } catch (Exception e) {
+                    }
+                }
+            };
+t1.start();
+    }
+
     public void link(ActionEvent event) throws Exception {
         {
             java.awt.Desktop.getDesktop().browse(new URI("http://www.adamdelarosa.com"));
         }
     }
-
-
-
-
 
 
 }
