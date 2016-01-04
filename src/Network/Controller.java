@@ -1,4 +1,4 @@
-package sample;
+package Network;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -7,7 +7,6 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.net.URI;
@@ -26,7 +25,7 @@ public class Controller implements EventHandler<ActionEvent> {
 
 
     public void handle(ActionEvent eventWhoIs) {
-        whoIs who = new whoIs();
+        WhoIs who = new WhoIs();
         System.setProperty("apple.laf.useScreenMenuBar", "true");
 
         String text = whIpField.getText();
@@ -51,25 +50,17 @@ public class Controller implements EventHandler<ActionEvent> {
 
     public void traceButton() {
         String text = traceIp.getText();
-        traceRoute trace = new traceRoute(this);
+        TraceRoute trace = new TraceRoute(this);
         trace.changeText(this,text);
 
 
 
-
     }
-
-    public String pingInput;
-
-    public void pingButton() {
-
-    }
+    public void pingButton() {}
 
     public void link(ActionEvent event) throws Exception {
         {
             java.awt.Desktop.getDesktop().browse(new URI("http://www.adamdelarosa.com"));
         }
     }
-
-
 }

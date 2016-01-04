@@ -1,16 +1,10 @@
-package sample;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+package Network;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import javax.swing.*;
-
-
-
 
 public class Main extends Application {
 
