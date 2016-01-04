@@ -25,7 +25,7 @@ public class Controller implements EventHandler<ActionEvent> {
 
 
     public void handle(ActionEvent eventWhoIs) {
-        WhoIs who = new WhoIs();
+        whoIs who = new whoIs();
         System.setProperty("apple.laf.useScreenMenuBar", "true");
 
         String text = whIpField.getText();
@@ -50,7 +50,7 @@ public class Controller implements EventHandler<ActionEvent> {
 
     public void traceButton() {
         String text = traceIp.getText();
-        TraceRoute trace = new TraceRoute(this);
+        traceRoute trace = new traceRoute(this);
         trace.changeText(this,text);
 
 
