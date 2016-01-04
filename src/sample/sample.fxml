@@ -29,13 +29,13 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <Button fx:id="cal" layoutX="433.0" layoutY="55.0" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="133.0" text="Whois" />
-                              <TextField fx:id="address" layoutX="114.0" layoutY="55.0" onAction="#handle" prefHeight="26.0" prefWidth="310.0" promptText="www.example.com" />
+                              <TextField fx:id="whIpField" layoutX="114.0" layoutY="55.0" onAction="#handle" prefHeight="26.0" prefWidth="310.0" promptText="www.example.com" />
                               <Label layoutX="20.0" layoutY="60.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
                               <Label layoutX="21.0" layoutY="115.0" prefHeight="16.0" prefWidth="66.0" text="IP:" />
-                              <Label fx:id="ip" layoutX="115.0" layoutY="115.0" text="xxx.xxx.xxx.xxx" />
+                              <Label fx:id="whoIpLabel" layoutX="115.0" layoutY="115.0" text="xxx.xxx.xxx.xxx" />
                               <Label layoutX="21.0" layoutY="92.0" prefHeight="16.0" prefWidth="73.0" text="HostName:" />
                               <Label fx:id="hostname" layoutX="114.0" layoutY="92.0" text="www.example.com" />
-                              <TextArea fx:id="whoText" editable="false" layoutX="10.0" layoutY="140.0" prefHeight="259.0" prefWidth="556.0" />
+                              <TextArea fx:id="whoTextArea" editable="false" layoutX="10.0" layoutY="140.0" prefHeight="259.0" prefWidth="556.0" />
                               <Hyperlink layoutX="231.0" layoutY="401.0" onAction="#link" text="©AdamDelarosa" />
                               <Label layoutX="20.0" layoutY="14.0" prefHeight="43.0" prefWidth="89.0" text="WhoIs">
                                  <font>
