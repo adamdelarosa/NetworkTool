@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.net.URI;
@@ -15,13 +16,13 @@ public class Controller implements EventHandler<ActionEvent> {
 
 
     @FXML
-    private Label whoIpLabel, hostname;
+    private Label whoIpLabel, whoIpLabelHostName;
     @FXML
-    public TextArea traceArea , pingArea , whoTextArea;
+    public TextArea traceArea, whoTextArea;
     @FXML
-    private TextField traceIp , whIpField , traceField;
-
-
+    private TextField traceField, whIpField;
+    @FXML
+    public Button traceButtonOnAction;
 
 
     public void handle(ActionEvent eventWhoIs) {
@@ -35,7 +36,7 @@ public class Controller implements EventHandler<ActionEvent> {
             address = InetAddress.getByName(text);
 
             whoIpLabel.setText(address.getCanonicalHostName());
-            hostname.setText(address.getHostName());
+            whoIpLabelHostName.setText(address.getHostName());
             whoTextArea.setText(who.getWhois(text));
 
         } catch (UnknownHostException e) {
@@ -49,14 +50,15 @@ public class Controller implements EventHandler<ActionEvent> {
 
 
     public void traceButton() {
-        String text = traceIp.getText();
-        traceRoute trace = new traceRoute(this);
-        trace.changeText(this,text);
-
-
+        traceArea.setText("");
+        String text = traceField.getText();
+        traceRoute trace = new traceRoute(this , this);
+        trace.changeText(this, text);
 
     }
-    public void pingButton() {}
+
+    public void pingButton() {
+    }
 
     public void link(ActionEvent event) throws Exception {
         {
