@@ -23,6 +23,8 @@ public class Controller implements EventHandler<ActionEvent> {
     private TextField traceField, whIpField;
     @FXML
     public Button traceButtonOnAction;
+    @FXML
+    public ProgressIndicator traceProgressBar;
 
 
     public void handle(ActionEvent eventWhoIs) {
@@ -52,7 +54,7 @@ public class Controller implements EventHandler<ActionEvent> {
     public void traceButton() {
         traceArea.setText("");
         String text = traceField.getText();
-        traceRoute trace = new traceRoute(this , this);
+        traceRoute trace = new traceRoute(this, this, this);
         trace.changeText(this, text);
 
     }

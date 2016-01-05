@@ -1,9 +1,6 @@
 package Network;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.layout.Background;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -13,10 +10,13 @@ public class traceRoute extends Controller {
     private Controller textOutTrace;
     @FXML
     private Controller traceButt;
+    @FXML
+    private Controller traceBar;
 
-    public traceRoute(Controller ta, Controller butt) {
+    public traceRoute(Controller ta, Controller butt, Controller bar) {
         textOutTrace = ta;
         traceButt = butt;
+        traceBar = bar;
     }
 
     public String inputLine;
@@ -37,8 +37,10 @@ public class traceRoute extends Controller {
                             textOutTrace.traceArea.appendText(inputLine);
                             textOutTrace.traceArea.appendText("\n");
                             traceButt.traceButtonOnAction.setDisable(true);
+                            traceBar.traceProgressBar.setVisible(true);
                         }
                         traceButt.traceButtonOnAction.setDisable(false);
+                        traceBar.traceProgressBar.setVisible(false);
                         in.close();
                     } catch (Exception e) {
                     }
