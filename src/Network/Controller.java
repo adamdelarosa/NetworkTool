@@ -1,5 +1,6 @@
 package Network;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,10 +23,9 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     private TextField traceField, whIpField;
     @FXML
-    public Button traceButtonOnAction;
+    public Button traceButtonOnAction , traceButtonStop;
     @FXML
     public ProgressIndicator traceProgressBar;
-
 
     public void handle(ActionEvent eventWhoIs) {
         whoIs who = new whoIs();
@@ -54,8 +54,12 @@ public class Controller implements EventHandler<ActionEvent> {
     public void traceButton() {
         traceArea.setText("");
         String text = traceField.getText();
-        traceRoute trace = new traceRoute(this, this, this);
-        trace.changeText(this, text);
+        traceRoute trace = new traceRoute(this, this, this, this);
+        trace.traceAction(text);
+    }
+    public void traceButtonStop(){
+        traceRoute trace = new traceRoute(this, this, this, this);
+        trace.killTraceRoute();
 
     }
 
