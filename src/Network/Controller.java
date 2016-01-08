@@ -23,7 +23,7 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     private TextField traceField, whIpField;
     @FXML
-    public Button traceButtonOnAction , traceButtonStop;
+    public Button traceButtonOnAction;
     @FXML
     public ProgressIndicator traceProgressBar;
 
