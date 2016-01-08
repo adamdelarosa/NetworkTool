@@ -33,16 +33,12 @@ public class traceRoute extends Controller {
                 BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
                 while ((inputLine = in.readLine()) != null) {
                     javafx.application.Platform.runLater( () -> textOutTrace.traceArea.appendText(inputLine + "\n") );
-
-                    //textOutTrace.traceArea.appendText(inputLine);
-                    //textOutTrace.traceArea.appendText("\n");
-                    //traceButt.traceButtonOnAction.setDisable(true);
-                    //traceBar.traceProgressBar.setVisible(true);
-
+                    traceButt.traceButtonOnAction.setDisable(true);
+                    traceBar.traceProgressBar.setVisible(true);
                 }
 
-                //traceButt.traceButtonOnAction.setDisable(false);
-                //traceBar.traceProgressBar.setVisible(false);
+                traceButt.traceButtonOnAction.setDisable(false);
+                traceBar.traceProgressBar.setVisible(false);
                 in.close();
             } catch (Exception e) {
             }
