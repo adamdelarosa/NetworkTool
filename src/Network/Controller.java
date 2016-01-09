@@ -23,7 +23,7 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     private TextField traceField, whIpField;
     @FXML
-    public Button traceButtonOnAction;
+    public Button traceButtonOnAction, traceButtonStop;
     @FXML
     public ProgressIndicator traceProgressBar;
 
@@ -57,9 +57,10 @@ public class Controller implements EventHandler<ActionEvent> {
         traceRoute trace = new traceRoute(this, this, this, this);
         trace.traceAction(text);
     }
-    public void traceButtonStop(){
+
+    public void traceButtonStop() {
         traceRoute trace = new traceRoute(this, this, this, this);
-        trace.killTraceRoute();
+        trace.killTraceRoute(1);
 
     }
 
