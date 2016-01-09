@@ -59,8 +59,11 @@ public class Controller implements EventHandler<ActionEvent> {
     }
 
     public void traceButtonStop() {
-        traceRoute trace = new traceRoute(this, this, this, this);
-        trace.killTraceRoute(1);
+        traceRoute trace2 = new traceRoute("8.8.8.8",1);
+        trace2.killTraceRoute();
+
+
+
 
     }
 
