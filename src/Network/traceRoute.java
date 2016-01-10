@@ -32,7 +32,7 @@ public class traceRoute extends Controller implements Runnable {
         } else {
             iThread = new Thread(this);
             iThread.start();
-        }
+         }
     }
 
     public void killTraceRoute() {
