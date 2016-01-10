@@ -6,12 +6,16 @@ import java.io.IOException;
 import java.net.SocketException;
 
 public class whoIs {
+        //Whois servers:
+        private String DEFAULT_HOST2 = "whois.internic.net";
+
     public String getWhois(String domainName) {
 
         StringBuilder result = new StringBuilder("");
 
         WhoisClient whois = new WhoisClient();
         try {
+
             whois.connect(WhoisClient.DEFAULT_HOST);
             String whoisData1 = whois.query("=" + domainName);
             result.append(whoisData1);
