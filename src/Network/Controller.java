@@ -54,13 +54,13 @@ public class Controller implements EventHandler<ActionEvent> {
     public void traceButton() {
         traceArea.setText("");
         String text = traceField.getText();
-        traceRoute trace = new traceRoute(this, this, this, true ,text);
+        traceRoute trace = new traceRoute(this,this,this,true,text);
         trace.traceAction();
 
     }
 
     public void traceButtonStop() {
-        traceRoute trace = new traceRoute(this, this, this, false,null);
+        traceRoute trace = new traceRoute(this,this,this,false,null);
         trace.killTraceRoute();
 
     }

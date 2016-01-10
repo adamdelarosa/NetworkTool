@@ -10,18 +10,15 @@ public class traceRoute extends Controller implements Runnable {
     @FXML
     private Controller textOutTrace, traceButt, traceBar;
     private String inputLine, traceData;
-    private Process runningProcess;
-    private Runtime r = null;
-    private BufferedReader in;
-    private Thread iThread;
-    private boolean loop;
+    public Thread iThread;
+    volatile boolean shutdown = false;
 
 
     public traceRoute(Controller ta, Controller butt, Controller bar, Boolean stop, String dataTrace) {
         textOutTrace = ta;
         traceButt = butt;
         traceBar = bar;
-        loop = stop;
+        shutdown = stop;
         traceData = dataTrace;
 
     }
@@ -29,7 +26,9 @@ public class traceRoute extends Controller implements Runnable {
     public void traceAction() {
         if (traceData != null && traceData.isEmpty()) {
             textOutTrace.traceArea.setText("Insert IP Address / URL Address.");
-
+            System.out.print(shutdown);
+            iThread = new Thread(this);
+            iThread.start();
         } else {
             iThread = new Thread(this);
             iThread.start();
@@ -37,31 +36,30 @@ public class traceRoute extends Controller implements Runnable {
     }
 
     public void killTraceRoute() {
-
-
+        shutdown = false;
         //num = 1;
         //if (iThread == null) {
         //  return;
         //}else {
-        loop = false;
-        // }
-    }
+        //}
+   }
 
     @Override
     public void run() {
-        try {
-            r = Runtime.getRuntime();
-            runningProcess = r.exec("traceroute " + traceData);
-            in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
+         try {
+            Runtime r = Runtime.getRuntime();
+            Process runningProcess = r.exec("traceroute " + "8.8.8.8");
+            BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
             {
-                while (loop && (inputLine = in.readLine()) != null) {
+                while (shutdown = true) {
+                    while ((inputLine = in.readLine()) != null) {
 
+                        System.out.println(shutdown);
 
-                    System.out.println(loop);
-
-                    javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(inputLine + "\n"));
-                    traceButt.traceButtonOnAction.setDisable(true);
-                    traceBar.traceProgressBar.setVisible(true);
+                        javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(inputLine + "\n"));
+                        traceButt.traceButtonOnAction.setDisable(true);
+                        traceBar.traceProgressBar.setVisible(true);
+                    }
                 }
             }
             traceButt.traceButtonOnAction.setDisable(false);
