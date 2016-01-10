@@ -34,29 +34,30 @@ public class traceRoute extends Controller implements Runnable {
         num = qwer;
     }
 
+    private Thread iThread;
+    private boolean loop = true;
 
 
     public String traceAction(String traceDataFromControler) {
        // if (newTraceIp != null && newTraceIp.isEmpty()) {}
             textOutTrace.traceArea.setText("Insert IP Address / URL Address.");
-            Runnable z = new traceRoute(textOutTrace,traceButt,traceBar,traceStopButton);
-            new Thread(z).start();
-            new Thread(z).interrupt();
+        iThread = new Thread(this);
+        iThread.start();
+
         return traceDataFromControler;
     }
 
     public void killTraceRoute(){
-        Runnable dsa = new traceRoute(newTraceIp,num);
-        new Thread(dsa).interrupt();
+        if (iThread == null) {
+            return;
+        }
 
-
-
-
-
-
+//        iThread.interrupt();
+        loop = false;
     }
 
 
+    @Override
     public void run() {
         try {
             System.out.print(num);
@@ -64,7 +65,7 @@ public class traceRoute extends Controller implements Runnable {
             runningProcess = r.exec("traceroute " + "8.8.8.8");
             in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
             {
-                while ((inputLine = in.readLine()) != null) {
+                while (loop && (inputLine = in.readLine()) != null) {
 
                     System.out.print(num);
                     javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(inputLine + "\n"));
