@@ -57,7 +57,7 @@ public class Controller implements EventHandler<ActionEvent> {
         traceArea.setText("");
         String text = traceField.getText();
         trace = new traceRoute(this,this,this,true,text);
-        trace.traceAction();
+        trace.traceAction(text);
 
     }
 

@@ -9,7 +9,7 @@ public class traceRoute extends Controller implements Runnable {
 
     @FXML
     private Controller textOutTrace, traceButt, traceBar;
-    private String inputLine, traceData;
+    private String inputLine, traceData, traceRouteInput;
     public Thread iThread;
     private boolean shutdown = false;
 
@@ -23,32 +23,29 @@ public class traceRoute extends Controller implements Runnable {
 
     }
 
-    public void traceAction() {
+    public void traceAction(String text) {
         if (traceData != null && traceData.isEmpty()) {
             textOutTrace.traceArea.setText("Insert IP Address / URL Address.");
-            System.out.print(shutdown);
-            iThread = new Thread(this);
-            iThread.start();
         } else {
+            traceRouteInput = text;
             iThread = new Thread(this);
             iThread.start();
-         }
+        }
     }
 
     public void killTraceRoute() {
-        shutdown = false;
-        //num = 1;
-        //if (iThread == null) {
-        //  return;
-        //}else {
-        //}
-   }
+        if (iThread == null) {
+            return;
+        } else {
+            shutdown = false;
+        }
+    }
 
     @Override
     public void run() {
         try {
             Runtime r = Runtime.getRuntime();
-            Process runningProcess = r.exec("ping " + "8.8.8.8");
+            Process runningProcess = r.exec("traceroute " + traceRouteInput);
             BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
 
 
@@ -57,12 +54,7 @@ public class traceRoute extends Controller implements Runnable {
                 javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(inputLine + "\n"));
                 traceButt.traceButtonOnAction.setDisable(true);
                 traceBar.traceProgressBar.setVisible(true);
-
-
             }
-            javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(inputLine + "\n" + shutdown));
-            System.out.println(shutdown);
-
             traceButt.traceButtonOnAction.setDisable(false);
             traceBar.traceProgressBar.setVisible(false);
             in.close();
