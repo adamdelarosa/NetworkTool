@@ -11,7 +11,7 @@ public class traceRoute extends Controller implements Runnable {
     private Controller textOutTrace, traceButt, traceBar;
     private String inputLine, traceData;
     public Thread iThread;
-    volatile boolean shutdown = false;
+    private boolean shutdown = false;
 
 
     public traceRoute(Controller ta, Controller butt, Controller bar, Boolean stop, String dataTrace) {
@@ -46,22 +46,23 @@ public class traceRoute extends Controller implements Runnable {
 
     @Override
     public void run() {
-         try {
+        try {
             Runtime r = Runtime.getRuntime();
-            Process runningProcess = r.exec("traceroute " + "8.8.8.8");
+            Process runningProcess = r.exec("ping " + "8.8.8.8");
             BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
-            {
-                while (shutdown = true) {
-                    while ((inputLine = in.readLine()) != null) {
 
-                        System.out.println(shutdown);
 
-                        javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(inputLine + "\n"));
-                        traceButt.traceButtonOnAction.setDisable(true);
-                        traceBar.traceProgressBar.setVisible(true);
-                    }
-                }
+            while (shutdown && (inputLine = in.readLine()) != null) {
+
+                javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(inputLine + "\n"));
+                traceButt.traceButtonOnAction.setDisable(true);
+                traceBar.traceProgressBar.setVisible(true);
+
+
             }
+            javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(inputLine + "\n" + shutdown));
+            System.out.println(shutdown);
+
             traceButt.traceButtonOnAction.setDisable(false);
             traceBar.traceProgressBar.setVisible(false);
             in.close();

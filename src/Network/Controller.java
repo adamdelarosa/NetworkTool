@@ -27,6 +27,8 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     public ProgressIndicator traceProgressBar;
 
+    private traceRoute trace;
+
     public void handle(ActionEvent eventWhoIs) {
         whoIs who = new whoIs();
         System.setProperty("apple.laf.useScreenMenuBar", "true");
@@ -54,13 +56,12 @@ public class Controller implements EventHandler<ActionEvent> {
     public void traceButton() {
         traceArea.setText("");
         String text = traceField.getText();
-        traceRoute trace = new traceRoute(this,this,this,true,text);
+        trace = new traceRoute(this,this,this,true,text);
         trace.traceAction();
 
     }
 
     public void traceButtonStop() {
-        traceRoute trace = new traceRoute(this,this,this,false,null);
         trace.killTraceRoute();
 
     }
