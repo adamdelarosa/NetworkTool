@@ -5,12 +5,12 @@ import javafx.fxml.FXML;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class traceRoute extends Controller implements Runnable {
+public class traceRoute implements Runnable {
 
     @FXML
     private Controller textOutTrace, traceButt, traceBar;
     private String inputLine, traceData, traceRouteInput;
-    public Thread iThread;
+    private Thread iThread;
     private boolean shutdown = false;
 
 
