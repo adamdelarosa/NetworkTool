@@ -9,16 +9,16 @@ public class traceRoute implements Runnable {
 
     @FXML
     private Controller textOutTrace, traceButt, traceBar;
-    private String inputLine, traceData, traceRouteInput;
+    private String traceInputCli, traceData, traceRouteInput;
     private Thread iThread;
     private boolean shutdown = false;
 
 
-    public traceRoute(Controller ta, Controller butt, Controller bar, Boolean stop, String dataTrace) {
-        textOutTrace = ta;
-        traceButt = butt;
-        traceBar = bar;
-        shutdown = stop;
+    public traceRoute(Controller tatrace, Controller butttrace, Controller bartrace, Boolean stoptrace, String dataTrace) {
+        textOutTrace = tatrace;
+        traceButt = butttrace;
+        traceBar = bartrace;
+        shutdown = stoptrace;
         traceData = dataTrace;
 
     }
@@ -49,9 +49,9 @@ public class traceRoute implements Runnable {
             BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
 
 
-            while (shutdown && (inputLine = in.readLine()) != null) {
+            while (shutdown && (traceInputCli = in.readLine()) != null) {
 
-                javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(inputLine + "\n"));
+                javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(traceInputCli + "\n"));
                 traceButt.traceButtonOnAction.setDisable(true);
                 traceBar.traceProgressBar.setVisible(true);
             }

@@ -17,17 +17,18 @@ public class Controller implements EventHandler<ActionEvent> {
 
 
     @FXML
-    private Label whoIpLabel, whoIpLabelHostName;
+    private Label whoIpLabel,whoIpLabelHostName;
     @FXML
-    public TextArea traceArea, whoTextArea;
+    public TextArea traceArea,whoTextArea,pingArea;
     @FXML
-    private TextField traceField, whIpField;
+    private TextField traceField,whIpField,pingField;
     @FXML
-    public Button traceButtonOnAction, traceButtonStop;
+    public ProgressIndicator traceProgressBar,pingProgressBar;
     @FXML
-    public ProgressIndicator traceProgressBar;
+    public Button traceButtonOnAction,pingButtonOnAction;
 
-    private traceRoute trace;
+    private traceRoute traceCon;
+    private ping pingCon;
 
     public void handle(ActionEvent eventWhoIs) {
         whoIs who = new whoIs();
@@ -56,18 +57,27 @@ public class Controller implements EventHandler<ActionEvent> {
     public void traceButton() {
         traceArea.setText("");
         String text = traceField.getText();
-        trace = new traceRoute(this,this,this,true,text);
-        trace.traceAction(text);
-
+        traceCon = new traceRoute(this,this,this,true,text);
+        traceCon.traceAction(text);
     }
-
     public void traceButtonStop() {
-        trace.killTraceRoute();
-
+        traceCon.killTraceRoute();
     }
 
     public void pingButton() {
+        pingArea.setText("");
+        String text = pingField.getText();
+        pingCon = new ping(this,this,this,true,text);
+        pingCon.pingAction(text);
     }
+    public void pingButtonStop() {
+        pingCon.killPing();
+    }
+
+
+
+
+
 
     public void link(ActionEvent event) throws Exception {
         {

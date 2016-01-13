@@ -16,8 +16,8 @@ public class Main extends Application {
         System.setProperty("apple.laf.useScreenMenuBar", "true");
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("WhoIs INFO");
-        primaryStage.setScene(new Scene(root, 575, 520));
+        primaryStage.setTitle("NetWork Tool");
+        primaryStage.setScene(new Scene(root, 740, 420));
         primaryStage.show();
         primaryStage.setResizable(false);
     }

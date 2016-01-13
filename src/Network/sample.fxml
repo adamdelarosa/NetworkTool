@@ -6,34 +6,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane alignment="center" hgap="10" prefHeight="520.0" prefWidth="575.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Network.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="418.0" prefWidth="756.0" styleClass="background" stylesheets="@../FeelUI/DarkTheme.css" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Network.Controller">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
-      <RowConstraints />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
+      <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
    </rowConstraints>
    <children>
-      <Pane prefHeight="521.0" prefWidth="575.0">
+      <Pane prefHeight="398.0" prefWidth="756.0" styleClass="background" stylesheets="@../FeelUI/DarkTheme.css">
          <children>
             <Line endX="100.0" layoutX="435.0" layoutY="108.0" opacity="0.1" startX="-400.0" />
-            <TabPane layoutX="1.0" layoutY="60.0" prefHeight="460.0" prefWidth="575.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane layoutX="1.0" layoutY="37.0" prefHeight="379.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="  WhoIs  ">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane prefHeight="346.0" prefWidth="755.0" styleClass="background" stylesheets="@../FeelUI/DarkTheme.css">
                            <children>
-                              <Button fx:id="cal" layoutX="433.0" layoutY="55.0" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="133.0" text="Whois" />
-                              <TextField fx:id="whIpField" layoutX="114.0" layoutY="55.0" onAction="#handle" prefHeight="26.0" prefWidth="310.0" promptText="www.example.com" />
-                              <Label layoutX="20.0" layoutY="60.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
-                              <Label layoutX="21.0" layoutY="115.0" prefHeight="16.0" prefWidth="66.0" text="IP:" />
-                              <Label fx:id="whoIpLabel" layoutX="115.0" layoutY="115.0" text="xxx.xxx.xxx.xxx" />
-                              <Label layoutX="21.0" layoutY="92.0" prefHeight="16.0" prefWidth="73.0" text="HostName:" />
-                              <Label fx:id="whoIpLabelHostName" layoutX="114.0" layoutY="92.0" text="www.example.com" />
-                              <TextArea fx:id="whoTextArea" editable="false" layoutX="10.0" layoutY="140.0" prefHeight="259.0" prefWidth="556.0" />
-                              <Hyperlink layoutX="231.0" layoutY="401.0" onAction="#link" text="©AdamDelarosa" />
-                              <Label layoutX="20.0" layoutY="14.0" prefHeight="43.0" prefWidth="89.0" text="WhoIs">
+                              <Button fx:id="cal" layoutX="433.0" layoutY="55.0" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="133.0" stylesheets="@../FeelUI/DarkTheme.css" text="Whois" textOverrun="CLIP" />
+                              <TextField fx:id="whIpField" layoutX="114.0" layoutY="55.0" onAction="#handle" prefHeight="26.0" prefWidth="310.0" promptText="www.example.com" styleClass="label-header" stylesheets="@../FeelUI/DarkTheme.css" />
+                              <Label layoutX="20.0" layoutY="60.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" textFill="WHITE" />
+                              <Label layoutX="21.0" layoutY="115.0" prefHeight="16.0" prefWidth="66.0" text="IP:" textFill="WHITE" />
+                              <Label fx:id="whoIpLabel" layoutX="115.0" layoutY="115.0" text="xxx.xxx.xxx.xxx" textFill="WHITE" />
+                              <Label layoutX="21.0" layoutY="92.0" prefHeight="16.0" prefWidth="73.0" text="HostName:" textFill="WHITE" />
+                              <Label fx:id="whoIpLabelHostName" layoutX="114.0" layoutY="92.0" text="www.example.com" textFill="WHITE" />
+                              <TextArea fx:id="whoTextArea" editable="false" layoutX="5.0" layoutY="138.0" prefHeight="205.0" prefWidth="730.0" styleClass="label-header" stylesheets="@../FeelUI/DarkTheme.css" />
+                              <Label layoutX="20.0" layoutY="14.0" prefHeight="43.0" prefWidth="89.0" text="WhoIs" textFill="WHITE">
                                  <font>
                                     <Font name="Avenir Roman" size="29.0" />
                                  </font>
@@ -44,41 +45,43 @@
                 </Tab>
                 <Tab text="  TraceRoute  ">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="653.0" styleClass="background">
                            <children>
-                              <Label layoutX="14.0" layoutY="14.0" prefHeight="43.0" prefWidth="157.0" text="TraceRoute">
+                              <Label layoutX="14.0" layoutY="14.0" prefHeight="43.0" prefWidth="157.0" text="TraceRoute" textFill="WHITE">
                                  <font>
                                     <Font name="Avenir Roman" size="29.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="22.0" layoutY="63.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
-                              <TextArea fx:id="traceArea" editable="false" layoutX="11.0" layoutY="137.0" prefHeight="269.0" prefWidth="553.0" />
-                              <TextField fx:id="traceField" layoutX="122.0" layoutY="58.0" prefHeight="26.0" prefWidth="279.0" />
+                              <Label layoutX="22.0" layoutY="63.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" textFill="WHITE" />
+                              <TextArea fx:id="traceArea" editable="false" layoutX="4.0" layoutY="106.0" prefHeight="234.0" prefWidth="741.0" styleClass="background" stylesheets="@../FeelUI/DarkTheme.css" />
+                              <TextField fx:id="traceField" layoutX="122.0" layoutY="58.0" prefHeight="26.0" prefWidth="279.0" promptText="www.example.com" stylesheets="@../FeelUI/DarkTheme.css" />
                               <Button fx:id="traceButtonOnAction" layoutX="425.0" layoutY="58.0" mnemonicParsing="false" onAction="#traceButton" prefHeight="26.0" prefWidth="85.0" text="Trace" />
-                              <Hyperlink layoutX="231.0" layoutY="401.0" onAction="#link" text="©AdamDelarosa" />
-                              <ProgressIndicator fx:id="traceProgressBar" disable="true" layoutX="519.0" layoutY="53.0" prefHeight="37.0" prefWidth="30.0" visible="false" />
-                              <Button layoutX="426.0" layoutY="90.0" mnemonicParsing="false" onAction="#traceButtonStop" prefHeight="8.0" prefWidth="85.0" text="Stop" />
+                              <Hyperlink layoutX="231.0" layoutY="406.0" onAction="#link" text="©AdamDelarosa" textFill="WHITE" />
+                              <ProgressIndicator fx:id="traceProgressBar" disable="true" layoutX="625.0" layoutY="34.0" prefHeight="70.0" prefWidth="78.0" visible="false" />
+                              <Button layoutX="528.0" layoutY="58.0" mnemonicParsing="false" onAction="#traceButtonStop" prefHeight="8.0" prefWidth="85.0" text="Stop" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
                   <Tab text="ping">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="background">
                            <children>
-                              <Label layoutX="16.0" layoutY="13.0" prefHeight="43.0" prefWidth="89.0" text="Ping">
+                              <Label layoutX="16.0" layoutY="13.0" prefHeight="43.0" prefWidth="89.0" text="Ping" textFill="WHITE">
                                  <font>
                                     <Font name="Avenir Roman" size="29.0" />
                                  </font>
                               </Label>
                               <Hyperlink layoutX="215.0" layoutY="403.0" onAction="#link" text="©AdamDelarosa" />
-                              <TextArea fx:id="pingArea" editable="false" layoutX="10.0" layoutY="142.0" prefHeight="259.0" prefWidth="556.0" />
-                              <Label fx:id="hostname1" layoutX="96.0" layoutY="94.0" text="www.example.com" />
-                              <Label layoutX="12.0" layoutY="94.0" prefHeight="16.0" prefWidth="73.0" text="HostName:" />
-                              <Label fx:id="ip1" layoutX="105.0" layoutY="115.0" text="xxx.xxx.xxx.xxx" />
-                              <Label layoutX="15.0" layoutY="115.0" prefHeight="16.0" prefWidth="66.0" text="IP:" />
-                              <Label layoutX="9.0" layoutY="53.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
-                              <TextField layoutX="110.0" layoutY="50.0" prefHeight="26.0" prefWidth="310.0" promptText="www.example.com" />
-                              <Button layoutX="428.0" layoutY="50.0" mnemonicParsing="false" onAction="#pingButton" prefHeight="26.0" prefWidth="133.0" text="Ping" />
+                              <TextArea fx:id="pingArea" editable="false" layoutX="6.0" layoutY="138.0" prefHeight="201.0" prefWidth="739.0" />
+                              <Label fx:id="hostname1" layoutX="96.0" layoutY="94.0" text="www.example.com" textFill="WHITE" />
+                              <Label layoutX="12.0" layoutY="94.0" prefHeight="16.0" prefWidth="73.0" text="HostName:" textFill="WHITE" />
+                              <Label fx:id="ip1" layoutX="105.0" layoutY="115.0" text="xxx.xxx.xxx.xxx" textFill="WHITE" />
+                              <Label layoutX="15.0" layoutY="115.0" prefHeight="16.0" prefWidth="66.0" text="IP:" textFill="WHITE" />
+                              <Label layoutX="14.0" layoutY="60.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" textFill="WHITE" />
+                              <TextField fx:id="pingField" layoutX="110.0" layoutY="57.0" prefHeight="26.0" prefWidth="310.0" promptText="www.example.com" />
+                              <Button fx:id="pingButtonOnAction" layoutX="428.0" layoutY="57.0" mnemonicParsing="false" onAction="#pingButton" prefHeight="26.0" prefWidth="133.0" text="Ping" />
+                              <ProgressIndicator fx:id="pingProgressBar" layoutX="605.0" layoutY="35.0" prefHeight="82.0" prefWidth="91.0" visible="false" />
+                              <Button layoutX="428.0" layoutY="94.0" mnemonicParsing="false" onAction="#pingButtonStop" prefHeight="26.0" prefWidth="133.0" text="Stop" />
                            </children></AnchorPane>
                     </content>
                   </Tab>
@@ -92,23 +95,20 @@
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                     </content>
                   </Tab>
-                  <Tab text="   Info  ">
+                  <Tab text=" Info  ">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="648.0" />
                     </content>
                   </Tab>
-                  <Tab text="  Lookup   ">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                    </content>
-                  </Tab>
+                  <Tab text="Lookup" />
               </tabs>
             </TabPane>
-            <Label layoutX="146.0" layoutY="-4.0" prefHeight="59.0" prefWidth="279.0" text="Network Tool">
+            <Label layoutX="85.0" layoutY="-11.0" prefHeight="59.0" prefWidth="279.0" text="Network Tool" textFill="WHITE">
                <font>
                   <Font name="Avenir Roman" size="43.0" />
                </font>
             </Label>
+            <Hyperlink layoutX="629.0" layoutY="17.0" onAction="#link" prefHeight="1.0" prefWidth="113.0" text="©AdamDelarosa" textFill="WHITE" />
          </children>
       </Pane>
    </children>
