@@ -18,7 +18,7 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     public TextArea traceArea,whoTextArea,pingArea,portScanArea;
     @FXML
-    private TextField traceField,whIpField,pingField,portScanField;
+    private TextField traceField,whIpField,pingField,portScanField,startPortField,endPortField;
     @FXML
     public ProgressIndicator traceProgressBar,pingProgressBar,portScanProgressBar;
     @FXML
@@ -73,8 +73,10 @@ public class Controller implements EventHandler<ActionEvent> {
     public void portScanButton() {
         portScanArea.setText("");
         String text = portScanField.getText();
+        String startP = startPortField.getText();
+        String endP = endPortField.getText();
         portScanCon = new PortScan(this,this,this,true,text);
-        portScanCon.portScanAction(text);
+        portScanCon.portScanAction(text,startP,endP);
     }
     public void portScanButtonStop() {
         portScanCon.killPortScan();

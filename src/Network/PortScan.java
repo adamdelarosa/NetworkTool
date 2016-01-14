@@ -8,8 +8,8 @@ import java.io.InputStreamReader;
 public class PortScan implements Runnable {
 
     @FXML
-    private Controller textOutportScan, portScanButt, portScanBar;
-    private String portScanInputCli, portScanData, portScanInput;
+    private Controller textOutportScan, portScanButt,portScanBar;
+    private String portScanInputCli,portScanData,portScanInput,startPort,endPort;
     private Thread iThread;
     private boolean shutdown = false;
 
@@ -23,11 +23,15 @@ public class PortScan implements Runnable {
 
     }
 
-    public void portScanAction(String text) {
+    public void portScanAction(String text,String startP, String endP) {
         if (portScanData != null && portScanData.isEmpty()) {
             textOutportScan.portScanArea.setText("Insert IP Address / URL Address.");
+            System.out.print("nc -zv " + portScanInput + startPort + "-" + endPort);
         } else {
+            System.out.print("nc -zv " + portScanInput + startPort + "-" + endPort);
             portScanInput = text;
+            startPort = startP;
+            endPort = endP;
             iThread = new Thread(this);
             iThread.start();
         }
@@ -45,11 +49,12 @@ public class PortScan implements Runnable {
     public void run() {
         try {
             Runtime r = Runtime.getRuntime();
-            Process runningProcess = r.exec("ping " + portScanInput);
+            Process runningProcess = r.exec("nc -zv " + portScanInput + startPort + "-" + endPort);
             BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
 
 
             while (shutdown && (portScanInputCli = in.readLine()) != null) {
+
 
                 javafx.application.Platform.runLater(() -> textOutportScan.portScanArea.appendText(portScanInputCli + "\n"));
                 portScanButt.portScanOnAction.setDisable(true);

@@ -78,7 +78,7 @@
                            </children></AnchorPane>
                     </content>
                   </Tab>
-                  <Tab text="  Port Scan  ">
+                  <Tab text="  PortScan  ">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -89,11 +89,11 @@
                               </Label>
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
                               <Button fx:id="portScanOnAction" layoutX="610.0" layoutY="60.0" mnemonicParsing="false" onAction="#portScanButton" prefHeight="26.0" prefWidth="63.0" text="Scan" />
-                              <TextArea fx:id="portScanArea" layoutX="4.0" layoutY="110.0" prefHeight="232.0" prefWidth="741.0" />
+                              <TextArea fx:id="portScanArea" editable="false" layoutX="4.0" layoutY="110.0" prefHeight="232.0" prefWidth="741.0" />
                               <TextField fx:id="portScanField" layoutX="109.0" layoutY="60.0" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
                               <ProgressIndicator fx:id="portScanProgressBar" layoutX="697.0" layoutY="4.0" prefHeight="53.0" prefWidth="61.0" visible="false" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="4.0" />
-                              <TextField layoutX="424.0" layoutY="60.0" prefHeight="26.0" prefWidth="45.0" promptText="80" />
-                              <TextField layoutX="543.0" layoutY="60.0" prefHeight="26.0" prefWidth="45.0" promptText="80" />
+                              <TextField fx:id="startPortField" layoutX="424.0" layoutY="60.0" prefHeight="26.0" prefWidth="45.0" promptText="80" />
+                              <TextField fx:id="endPortField" layoutX="543.0" layoutY="60.0" prefHeight="26.0" prefWidth="45.0" promptText="80" />
                               <Text layoutX="317.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scan from port:" />
                               <Text layoutX="478.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to port:" />
                               <Button layoutX="679.0" layoutY="60.0" mnemonicParsing="false" onAction="#portScanButtonStop" prefHeight="26.0" prefWidth="60.0" text="Stop" />
