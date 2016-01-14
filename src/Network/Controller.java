@@ -15,20 +15,18 @@ import java.net.URI;
 
 public class Controller implements EventHandler<ActionEvent> {
 
-
     @FXML
-    private Label whoIpLabel,whoIpLabelHostName;
+    public TextArea traceArea,whoTextArea,pingArea,portScanArea;
     @FXML
-    public TextArea traceArea,whoTextArea,pingArea;
+    private TextField traceField,whIpField,pingField,portScanField;
     @FXML
-    private TextField traceField,whIpField,pingField;
+    public ProgressIndicator traceProgressBar,pingProgressBar,portScanProgressBar;
     @FXML
-    public ProgressIndicator traceProgressBar,pingProgressBar;
-    @FXML
-    public Button traceButtonOnAction,pingButtonOnAction;
+    public Button traceButtonOnAction,pingButtonOnAction,portScanOnAction;
 
     private traceRoute traceCon;
     private ping pingCon;
+    private PortScan portScanCon;
 
     public void handle(ActionEvent eventWhoIs) {
         whoIs who = new whoIs();
@@ -40,8 +38,6 @@ public class Controller implements EventHandler<ActionEvent> {
         try {
             address = InetAddress.getByName(text);
 
-            whoIpLabel.setText(address.getCanonicalHostName());
-            whoIpLabelHostName.setText(address.getHostName());
             whoTextArea.setText(who.getWhois(text));
 
         } catch (UnknownHostException e) {
@@ -73,6 +69,23 @@ public class Controller implements EventHandler<ActionEvent> {
     public void pingButtonStop() {
         pingCon.killPing();
     }
+
+    public void portScanButton() {
+        portScanArea.setText("");
+        String text = portScanField.getText();
+        portScanCon = new PortScan(this,this,this,true,text);
+        portScanCon.portScanAction(text);
+    }
+    public void portScanButtonStop() {
+        portScanCon.killportScan();
+    }
+
+
+
+
+
+
+
 
 
 
