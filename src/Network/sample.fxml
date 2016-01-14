@@ -55,7 +55,7 @@
                               <TextArea fx:id="traceArea" editable="false" layoutX="4.0" layoutY="110.0" prefHeight="234.0" prefWidth="741.0" />
                               <TextField fx:id="traceField" layoutX="109.0" layoutY="60.0" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
                               <Button fx:id="traceButtonOnAction" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#traceButton" prefHeight="26.0" prefWidth="85.0" text="Trace" />
-                              <ProgressIndicator fx:id="traceProgressBar" disable="true" layoutX="625.0" layoutY="34.0" prefHeight="70.0" prefWidth="78.0" visible="false" />
+                              <ProgressIndicator fx:id="traceProgressBar" disable="true" layoutX="697.0" layoutY="4.0" prefHeight="47.0" prefWidth="50.0" visible="false" />
                               <Button layoutX="418.0" layoutY="60.0" mnemonicParsing="false" onAction="#traceButtonStop" prefHeight="8.0" prefWidth="85.0" text="Stop" />
                            </children></AnchorPane>
                   </content>
@@ -69,16 +69,11 @@
                                     <Font name="Avenir Roman" size="29.0" />
                                  </font>
                               </Label>
-                              <Hyperlink layoutX="215.0" layoutY="403.0" onAction="#link" text="©AdamDelarosa" />
                               <TextArea fx:id="pingArea" editable="false" layoutX="4.0" layoutY="110.0" prefHeight="224.0" prefWidth="743.0" />
-                              <Label fx:id="hostname1" layoutX="96.0" layoutY="94.0" text="www.example.com" textFill="WHITE" />
-                              <Label layoutX="12.0" layoutY="94.0" prefHeight="16.0" prefWidth="73.0" text="HostName:" textFill="WHITE" />
-                              <Label fx:id="ip1" layoutX="105.0" layoutY="115.0" text="xxx.xxx.xxx.xxx" textFill="WHITE" />
-                              <Label layoutX="15.0" layoutY="115.0" prefHeight="16.0" prefWidth="66.0" text="IP:" textFill="WHITE" />
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
                               <TextField fx:id="pingField" layoutX="109.0" layoutY="60.0" prefHeight="26.0" prefWidth="193.0" promptText="www.example.com" />
                               <Button fx:id="pingButtonOnAction" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#pingButton" prefHeight="26.0" prefWidth="133.0" text="Ping" />
-                              <ProgressIndicator fx:id="pingProgressBar" layoutX="605.0" layoutY="35.0" prefHeight="82.0" prefWidth="91.0" visible="false" />
+                              <ProgressIndicator fx:id="pingProgressBar" disable="true" layoutX="697.0" layoutY="4.0" prefHeight="42.0" prefWidth="50.0" visible="false" />
                               <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#pingButtonStop" prefHeight="26.0" prefWidth="133.0" text="Stop" />
                            </children></AnchorPane>
                     </content>
@@ -93,10 +88,10 @@
                                  </font>
                               </Label>
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
-                              <Button layoutX="610.0" layoutY="60.0" mnemonicParsing="false" onAction="#portScanButton" prefHeight="26.0" prefWidth="63.0" text="Scan" />
+                              <Button fx:id="portScanOnAction" layoutX="610.0" layoutY="60.0" mnemonicParsing="false" onAction="#portScanButton" prefHeight="26.0" prefWidth="63.0" text="Scan" />
                               <TextArea fx:id="portScanArea" layoutX="4.0" layoutY="110.0" prefHeight="232.0" prefWidth="741.0" />
                               <TextField fx:id="portScanField" layoutX="109.0" layoutY="60.0" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
-                              <ProgressIndicator fx:id="portScanProgressBar" layoutX="640.0" layoutY="4.0" prefHeight="53.0" prefWidth="61.0" visible="false" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="4.0" />
+                              <ProgressIndicator fx:id="portScanProgressBar" layoutX="697.0" layoutY="4.0" prefHeight="53.0" prefWidth="61.0" visible="false" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="4.0" />
                               <TextField layoutX="424.0" layoutY="60.0" prefHeight="26.0" prefWidth="45.0" promptText="80" />
                               <TextField layoutX="543.0" layoutY="60.0" prefHeight="26.0" prefWidth="45.0" promptText="80" />
                               <Text layoutX="317.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Scan from port:" />

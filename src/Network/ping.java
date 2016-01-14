@@ -30,7 +30,6 @@ public class ping implements Runnable {
             pingInput = text;
             iThread = new Thread(this);
             iThread.start();
-            System.out.println(shutdown);
         }
     }
 

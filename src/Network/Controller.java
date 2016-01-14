@@ -77,7 +77,7 @@ public class Controller implements EventHandler<ActionEvent> {
         portScanCon.portScanAction(text);
     }
     public void portScanButtonStop() {
-        portScanCon.killportScan();
+        portScanCon.killPortScan();
     }
 
 

@@ -8,33 +8,32 @@ import java.io.InputStreamReader;
 public class PortScan implements Runnable {
 
     @FXML
-    private Controller textOutPing, pingButt, pingBar;
-    private String pingInputCli, pingData, pingInput;
+    private Controller textOutportScan, portScanButt, portScanBar;
+    private String portScanInputCli, portScanData, portScanInput;
     private Thread iThread;
     private boolean shutdown = false;
 
 
-    public PortScan(Controller taping, Controller buttping, Controller barping, Boolean stopping, String dataPing) {
-        textOutPing = taping;
-        pingButt = buttping;
-        pingBar = barping;
-        shutdown = stopping;
-        pingData = dataPing;
+    public PortScan(Controller taportScan, Controller buttportScan, Controller barportScan, Boolean stopportScan, String dataportScan) {
+        textOutportScan = taportScan;
+        portScanButt = buttportScan;
+        portScanBar = barportScan;
+        shutdown = stopportScan;
+        portScanData = dataportScan;
 
     }
 
     public void portScanAction(String text) {
-        if (pingData != null && pingData.isEmpty()) {
-            textOutPing.pingArea.setText("Insert IP Address / URL Address.");
+        if (portScanData != null && portScanData.isEmpty()) {
+            textOutportScan.portScanArea.setText("Insert IP Address / URL Address.");
         } else {
-            pingInput = text;
+            portScanInput = text;
             iThread = new Thread(this);
             iThread.start();
-            System.out.println(shutdown);
         }
     }
 
-    public void killportScan() {
+    public void killPortScan() {
         if (iThread == null) {
             return;
         } else {
@@ -46,18 +45,18 @@ public class PortScan implements Runnable {
     public void run() {
         try {
             Runtime r = Runtime.getRuntime();
-            Process runningProcess = r.exec("ping " + pingInput);
+            Process runningProcess = r.exec("ping " + portScanInput);
             BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
 
 
-            while (shutdown && (pingInputCli = in.readLine()) != null) {
+            while (shutdown && (portScanInputCli = in.readLine()) != null) {
 
-                javafx.application.Platform.runLater(() -> textOutPing.pingArea.appendText(pingInputCli + "\n"));
-                pingButt.pingButtonOnAction.setDisable(true);
-                pingBar.pingProgressBar.setVisible(true);
+                javafx.application.Platform.runLater(() -> textOutportScan.portScanArea.appendText(portScanInputCli + "\n"));
+                portScanButt.portScanOnAction.setDisable(true);
+                portScanBar.portScanProgressBar.setVisible(true);
             }
-            pingButt.pingButtonOnAction.setDisable(false);
-            pingBar.pingProgressBar.setVisible(false);
+            portScanButt.portScanOnAction.setDisable(false);
+            portScanBar.portScanProgressBar.setVisible(false);
             in.close();
         } catch (Exception e) {
         }
