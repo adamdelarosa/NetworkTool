@@ -14,7 +14,7 @@ public class PortScan implements Runnable {
     private boolean shutdown = false;
 
 
-    public ping(Controller taping, Controller buttping, Controller barping, Boolean stopping, String dataPing) {
+    public PortScan(Controller taping, Controller buttping, Controller barping, Boolean stopping, String dataPing) {
         textOutPing = taping;
         pingButt = buttping;
         pingBar = barping;
