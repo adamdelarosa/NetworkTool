@@ -18,7 +18,7 @@
       <RowConstraints maxHeight="0.0" minHeight="0.0" prefHeight="0.0" />
    </rowConstraints>
    <children>
-      <Pane prefHeight="412.0" prefWidth="756.0">
+      <Pane prefHeight="487.0" prefWidth="756.0">
          <children>
             <Line endX="100.0" layoutX="435.0" layoutY="108.0" opacity="0.1" startX="-400.0" />
             <TabPane layoutX="1.0" layoutY="45.0" prefHeight="371.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
@@ -27,7 +27,7 @@
                   <content>
                     <AnchorPane prefHeight="346.0" prefWidth="755.0">
                            <children>
-                              <Button fx:id="cal" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#handle" prefHeight="26.0" prefWidth="133.0" text="Whois" textOverrun="CLIP" />
+                              <Button fx:id="cal" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#whoIsButton" prefHeight="26.0" prefWidth="133.0" text="Whois" textOverrun="CLIP" />
                               <TextField fx:id="whIpField" layoutX="109.0" layoutY="60.0" onAction="#handle" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
                               <Label layoutX="21.0" layoutY="115.0" prefHeight="16.0" prefWidth="66.0" text="IP:" textFill="WHITE" />
@@ -38,6 +38,7 @@
                                     <Font name="Avenir Roman" size="29.0" />
                                  </font>
                               </Label>
+                              <Button layoutX="516.0" layoutY="35.0" mnemonicParsing="false" onAction="#handle" text="Button" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -52,10 +53,10 @@
                                  </font>
                               </Label>
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
-                              <TextArea fx:id="traceArea" editable="false" layoutX="4.0" layoutY="110.0" prefHeight="234.0" prefWidth="741.0" />
+                              <TextArea fx:id="traceArea" editable="false" layoutX="4.0" layoutY="110.0" prefHeight="225.0" prefWidth="746.0" />
                               <TextField fx:id="traceField" layoutX="109.0" layoutY="60.0" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
                               <Button fx:id="traceButtonOnAction" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#traceButton" prefHeight="26.0" prefWidth="85.0" text="Trace" />
-                              <ProgressIndicator fx:id="traceProgressBar" disable="true" layoutX="697.0" layoutY="4.0" prefHeight="47.0" prefWidth="50.0" visible="false" />
+                              <ProgressIndicator fx:id="traceProgressBar" disable="true" layoutX="645.0" layoutY="5.0" prefHeight="100.0" prefWidth="100.0" visible="false" />
                               <Button layoutX="418.0" layoutY="60.0" mnemonicParsing="false" onAction="#traceButtonStop" prefHeight="8.0" prefWidth="85.0" text="Stop" />
                            </children></AnchorPane>
                   </content>
@@ -73,7 +74,7 @@
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
                               <TextField fx:id="pingField" layoutX="109.0" layoutY="60.0" prefHeight="26.0" prefWidth="193.0" promptText="www.example.com" />
                               <Button fx:id="pingButtonOnAction" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#pingButton" prefHeight="26.0" prefWidth="133.0" text="Ping" />
-                              <ProgressIndicator fx:id="pingProgressBar" disable="true" layoutX="697.0" layoutY="4.0" prefHeight="42.0" prefWidth="50.0" visible="false" />
+                              <ProgressIndicator fx:id="pingProgressBar" disable="true" layoutX="645.0" layoutY="4.0" prefHeight="100.0" prefWidth="100.0" visible="false" />
                               <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#pingButtonStop" prefHeight="26.0" prefWidth="133.0" text="Stop" />
                            </children></AnchorPane>
                     </content>

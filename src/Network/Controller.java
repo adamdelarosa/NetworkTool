@@ -1,13 +1,14 @@
 package Network;
 
-import javafx.application.Platform;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import org.nmap4j.core.nmap.NMapExecutionException;
+import org.nmap4j.core.nmap.NMapInitializationException;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -29,6 +30,16 @@ public class Controller implements EventHandler<ActionEvent> {
     private PortScan portScanCon;
 
     public void handle(ActionEvent eventWhoIs) {
+        Nmap mapper = new Nmap();
+        mapper.nmapRunner();
+
+    }
+
+    public void whoIsButton(ActionEvent eventWhoIs) {
+
+
+
+
         whoIs who = new whoIs();
         System.setProperty("apple.laf.useScreenMenuBar", "true");
 

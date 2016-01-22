@@ -38,9 +38,26 @@ public class traceRoute implements Runnable {
             return;
         } else {
             shutdown = false;
+            Thread stopT = new Thread(new Runnable() {
+                public void run() {
+                    try {
+                            textOutTrace.traceArea.appendText("\n" + "Stopping .");
+                        while(iThread.isAlive()) {
+                            Thread.sleep(1000);
+                            textOutTrace.traceArea.appendText(" .");
+                        }
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+
+            stopT.start();
         }
     }
 
+    public boolean visible = false;
     @Override
     public void run() {
         try {
@@ -50,10 +67,10 @@ public class traceRoute implements Runnable {
 
 
             while (shutdown && (traceInputCli = in.readLine()) != null) {
-
-                javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText(traceInputCli + "\n"));
+                javafx.application.Platform.runLater(() -> textOutTrace.traceArea.appendText("\n" +traceInputCli ));
                 traceButt.traceButtonOnAction.setDisable(true);
                 traceBar.traceProgressBar.setVisible(true);
+
             }
             traceButt.traceButtonOnAction.setDisable(false);
             traceBar.traceProgressBar.setVisible(false);
