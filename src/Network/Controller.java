@@ -16,24 +16,21 @@ import java.net.URI;
 public class Controller implements EventHandler<ActionEvent> {
 
     @FXML
-    public TextArea traceArea,whoTextArea,pingArea,portScanArea;
+    public TextArea traceArea,whoTextArea,pingArea,netstatArea;
     @FXML
-    public TextField traceField,whIpField,pingField;
+    public TextField traceField,whIpField,pingField,netstatField;
     @FXML
-    public ProgressIndicator traceProgressBar,pingProgressBar,portScanProgressBar;
+    public ProgressIndicator traceProgressBar,pingProgressBar,netstatProgressBar;
     @FXML
-    public Button traceButtonOnAction,pingButtonOnAction,portScanOnAction;
+    public Button traceButtonOnAction,pingButtonOnAction,netstatButtonOnAction;
 
     private traceRoute traceCon;
     private ping pingCon;
+    private Netstat netstatCon;
 
     public void handle(ActionEvent eventWhoIs) {}
 
     public void whoIsButton(ActionEvent eventWhoIs) {
-
-
-
-
 
         whoIs who = new whoIs();
         System.setProperty("apple.laf.useScreenMenuBar", "true");
@@ -53,6 +50,9 @@ public class Controller implements EventHandler<ActionEvent> {
             alert.setContentText("Please insert a valid Address or IP.");
             alert.showAndWait();
         }
+    }
+    public void whoIsButtonClear(){
+        whoTextArea.setText("");
     }
 
 
@@ -74,6 +74,15 @@ public class Controller implements EventHandler<ActionEvent> {
     }
     public void pingButtonStop() {
         pingCon.killPing();
+    }
+    public void netstatButton(){
+        netstatArea.setText("");
+        String text = netstatField.getText();
+        netstatCon = new Netstat(this,this,this,true,text);
+        netstatCon.netstatAction(text);
+    }
+    public void netstatButtonStop(){
+        netstatCon.killNetstat();
     }
 
 

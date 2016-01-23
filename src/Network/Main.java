@@ -15,7 +15,7 @@ public class Main extends Application {
         System.setProperty("apple.awt.graphics.EnableQ2DX", "true");
         System.setProperty("apple.laf.useScreenMenuBar", "true");
 
-        Parent root = FXMLLoader.load(getClass().getResource("../FeelUI/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("NetWork Tool");
         primaryStage.setScene(new Scene(root, 753, 378));
         primaryStage.show();
