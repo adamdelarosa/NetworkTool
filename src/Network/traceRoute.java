@@ -43,7 +43,7 @@ public class traceRoute implements Runnable {
                     try {
                             textOutTrace.traceArea.appendText("\n" + "Stopping .");
                         while(iThread.isAlive()) {
-                            Thread.sleep(1000);
+                            Thread.sleep(500);
                             textOutTrace.traceArea.appendText(" .");
                         }
                     } catch (InterruptedException e) {

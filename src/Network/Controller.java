@@ -7,8 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import org.nmap4j.core.nmap.NMapExecutionException;
-import org.nmap4j.core.nmap.NMapInitializationException;
+
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -19,7 +18,7 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     public TextArea traceArea,whoTextArea,pingArea,portScanArea;
     @FXML
-    private TextField traceField,whIpField,pingField,portScanField,startPortField,endPortField;
+    public TextField traceField,whIpField,pingField,portScanField,startPortField,endPortField;
     @FXML
     public ProgressIndicator traceProgressBar,pingProgressBar,portScanProgressBar;
     @FXML
@@ -29,11 +28,7 @@ public class Controller implements EventHandler<ActionEvent> {
     private ping pingCon;
     private PortScan portScanCon;
 
-    public void handle(ActionEvent eventWhoIs) {
-        Nmap mapper = new Nmap();
-        mapper.nmapRunner();
-
-    }
+    public void handle(ActionEvent eventWhoIs) {}
 
     public void whoIsButton(ActionEvent eventWhoIs) {
 

@@ -3,7 +3,7 @@
     <output-path>$USER_HOME$/Desktop/ewew/090</output-path>
     <root id="archive" name="network.jar">
       <element id="module-output" name="network" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/src/commons-net-1.4.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/API/commons-net-1.4.1.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
