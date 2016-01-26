@@ -86,7 +86,7 @@
                               <TextField fx:id="pingField" layoutX="109.0" layoutY="60.0" onAction="#pingButton" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
                               <Button fx:id="pingButtonOnAction" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#pingButton" prefHeight="26.0" prefWidth="133.0" text="Ping" />
                               <ProgressIndicator fx:id="pingProgressBar" disable="true" layoutX="645.0" layoutY="4.0" prefHeight="100.0" prefWidth="100.0" visible="false" />
-                              <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#pingButtonStop" prefHeight="26.0" prefWidth="133.0" text="Stop" />
+                              <Button fx:id="pingButtonStopOnAction" layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#pingButtonStop" prefHeight="26.0" prefWidth="133.0" text="Stop" />
                            </children>
                         </AnchorPane>
                     </content>

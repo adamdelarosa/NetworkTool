@@ -1,6 +1,8 @@
 package Network;
 
 
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
 import sun.font.TextLabel;
 
 
@@ -28,11 +31,9 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     public TextField traceField,whIpField,pingField,nslookupField;
     @FXML
-    public ProgressIndicator traceProgressBar,pingProgressBar,nslookupProgressBar;
+    public ProgressIndicator traceProgressBar,pingProgressBar;
     @FXML
-    public Button traceButtonOnAction,pingButtonOnAction,nslookupButtonOnAction;
-    @FXML
-    public Label netStatLabel;
+    public Button traceButtonOnAction,pingButtonOnAction,pingButtonStopOnAction,nslookupButtonOnAction;
     @FXML
     public ComboBox <String>  whoBox;
 
@@ -117,8 +118,11 @@ public class Controller implements EventHandler<ActionEvent> {
     public void pingButton() {
         pingArea.setText("");
         String text = pingField.getText();
-        pingCon = new ping(this,this,this,true,text);
+        pingCon = new ping(this,this,this,true,text,this);
         pingCon.pingAction(text);
+
+
+
     }
     public void pingButtonStop() {
         pingCon.killPing();
