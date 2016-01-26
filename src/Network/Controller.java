@@ -24,13 +24,13 @@ import java.util.Observable;
 public class Controller implements EventHandler<ActionEvent> {
 
     @FXML
-    public TextArea traceArea,whoTextArea,pingArea,netstatArea;
+    public TextArea traceArea,whoTextArea,pingArea,nslookupArea;
     @FXML
-    public TextField traceField,whIpField,pingField,netstatField;
+    public TextField traceField,whIpField,pingField,nslookupField;
     @FXML
-    public ProgressIndicator traceProgressBar,pingProgressBar,netstatProgressBar;
+    public ProgressIndicator traceProgressBar,pingProgressBar,nslookupProgressBar;
     @FXML
-    public Button traceButtonOnAction,pingButtonOnAction,netstatButtonOnAction;
+    public Button traceButtonOnAction,pingButtonOnAction,nslookupButtonOnAction;
     @FXML
     public Label netStatLabel;
     @FXML
@@ -38,7 +38,7 @@ public class Controller implements EventHandler<ActionEvent> {
 
     private traceRoute traceCon;
     private ping pingCon;
-    private Netstat netstatCon;
+    private Nslookup nslookupCon;
     private whoIs whoisCon;
 
 
@@ -90,6 +90,7 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     public void initialize(){
         whoBox.setItems(servers);
+        whoBox.setValue("whois.internic.net");
 
     }
 
@@ -104,6 +105,7 @@ public class Controller implements EventHandler<ActionEvent> {
         String text = traceField.getText();
         traceCon = new traceRoute(this,this,this,true,text);
         traceCon.traceAction(text);
+        System.out.print(text);
     }
     public void traceButtonStop() {
         traceCon.killTraceRoute();
@@ -122,16 +124,17 @@ public class Controller implements EventHandler<ActionEvent> {
         pingCon.killPing();
     }
 
-    ////Netstat////
+    ////Nslookup////
 
-    public void netstatButton() throws IOException {
-        netstatArea.setText("");
-        String text = null;
-        netstatCon = new Netstat(this,this,this,true,this,null);
-        netstatCon.netstatAction(text);
+    public void nslookupButton() throws IOException {
+        nslookupArea.setText("");
+        String text = nslookupField.getText();
+        nslookupCon = new Nslookup(this,true,text);
+        nslookupCon.nslookupAction(text);
     }
-    public void netstatButtonStop(){
-        netstatCon.killNetstat();
+    public void nslookupButtonStop(){
+        nslookupCon.killNslookup();
+        nslookupArea.setText("");
     }
 
     ////WebSite Button www.adamdelarosa.com////

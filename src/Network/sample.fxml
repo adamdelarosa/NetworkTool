@@ -30,16 +30,16 @@
                     <AnchorPane prefHeight="346.0" prefWidth="755.0">
                            <children>
                               <Button layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#whoIsButton" prefHeight="26.0" prefWidth="133.0" text="Whois" textOverrun="CLIP" />
-                              <TextField fx:id="whIpField" layoutX="109.0" layoutY="60.0" onAction="#handle" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
+                              <TextField fx:id="whIpField" layoutX="109.0" layoutY="60.0" onAction="#whoIsButton" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
-                              <TextArea fx:id="whoTextArea" editable="false" layoutX="4.0" layoutY="110.0" prefHeight="226.0" prefWidth="743.0" />
+                              <TextArea fx:id="whoTextArea" editable="false" layoutX="4.0" layoutY="108.0" prefHeight="229.0" prefWidth="746.0" />
                               <Label layoutX="16.0" layoutY="13.0" prefHeight="43.0" prefWidth="89.0" text="WhoIs">
                                  <font>
                                     <Font name="Avenir Roman" size="29.0" />
                                  </font>
                               </Label>
                               <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#whoIsButtonClear" prefHeight="26.0" prefWidth="133.0" text="Clear" />
-                              <ComboBox fx:id="whoBox" editable="true" layoutX="320.0" layoutY="22.0" prefHeight="26.0" prefWidth="272.0" promptText="Server List" />
+                              <ComboBox fx:id="whoBox" editable="true" layoutX="320.0" layoutY="22.0" prefHeight="26.0" prefWidth="272.0" promptText="whois.internic.net" />
                               <Label layoutX="263.0" layoutY="27.0" prefHeight="16.0" prefWidth="51.0" text="Server:" />
 
 
@@ -63,8 +63,8 @@
                                  </font>
                               </Label>
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
-                              <TextArea fx:id="traceArea" editable="false" layoutX="4.0" layoutY="110.0" prefHeight="225.0" prefWidth="746.0" />
-                              <TextField fx:id="traceField" layoutX="109.0" layoutY="60.0" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
+                              <TextArea fx:id="traceArea" editable="false" layoutX="4.0" layoutY="108.0" prefHeight="229.0" prefWidth="746.0" />
+                              <TextField fx:id="traceField" layoutX="109.0" layoutY="60.0" onAction="#traceButton" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
                               <Button fx:id="traceButtonOnAction" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#traceButton" prefHeight="26.0" prefWidth="133.0" text="Trace" />
                               <ProgressIndicator fx:id="traceProgressBar" disable="true" layoutX="645.0" layoutY="5.0" prefHeight="100.0" prefWidth="100.0" visible="false" />
                               <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#traceButtonStop" prefHeight="26.0" prefWidth="133.0" text="Stop" />
@@ -72,7 +72,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="ping">
+                  <Tab text="PING">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="background">
                            <children>
@@ -81,9 +81,9 @@
                                     <Font name="Avenir Roman" size="29.0" />
                                  </font>
                               </Label>
-                              <TextArea fx:id="pingArea" editable="false" layoutX="4.0" layoutY="110.0" prefHeight="224.0" prefWidth="743.0" />
+                              <TextArea fx:id="pingArea" editable="false" layoutX="4.0" layoutY="108.0" prefHeight="229.0" prefWidth="746.0" />
                               <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
-                              <TextField fx:id="pingField" layoutX="109.0" layoutY="60.0" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
+                              <TextField fx:id="pingField" layoutX="109.0" layoutY="60.0" onAction="#pingButton" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
                               <Button fx:id="pingButtonOnAction" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#pingButton" prefHeight="26.0" prefWidth="133.0" text="Ping" />
                               <ProgressIndicator fx:id="pingProgressBar" disable="true" layoutX="645.0" layoutY="4.0" prefHeight="100.0" prefWidth="100.0" visible="false" />
                               <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#pingButtonStop" prefHeight="26.0" prefWidth="133.0" text="Stop" />
@@ -91,21 +91,21 @@
                         </AnchorPane>
                     </content>
                   </Tab>
-                  <Tab text="  Netstat  ">
+                  <Tab text="Nslookup">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#netstatButtonStop" prefHeight="26.0" prefWidth="133.0" text="Stop" />
-                              <Button fx:id="netstatButtonOnAction" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#netstatButton" prefHeight="26.0" prefWidth="133.0" text="Netstat" />
-                              <Label layoutX="16.0" layoutY="13.0" prefHeight="43.0" prefWidth="167.0" text="NetStat">
+                              <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#nslookupButtonStop" prefHeight="26.0" prefWidth="133.0" text="Clear" />
+                              <Button fx:id="nslookupButtonOnAction" layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#nslookupButton" prefHeight="26.0" prefWidth="133.0" text="Nslookup" />
+                              <Label layoutX="16.0" layoutY="13.0" prefHeight="43.0" prefWidth="167.0" text="Nslookup">
                                  <font>
                                     <Font name="Avenir Roman" size="29.0" />
                                  </font>
                               </Label>
-                              <TextArea fx:id="netstatArea" editable="false" layoutX="4.0" layoutY="110.0" prefHeight="224.0" prefWidth="743.0" />
+                              <TextArea fx:id="nslookupArea" editable="false" layoutX="4.0" layoutY="108.0" prefHeight="229.0" prefWidth="746.0" />
                               <ProgressIndicator fx:id="netstatProgressBar" disable="true" layoutX="645.0" layoutY="4.0" prefHeight="100.0" prefWidth="100.0" visible="false" />
-                              <TextField fx:id="netstatField" editable="false" layoutX="109.0" layoutY="60.0" prefHeight="26.0" prefWidth="196.0" promptText="Netstat is ready . . . " />
-                              <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Status:" />
+                              <TextField fx:id="nslookupField" layoutX="109.0" layoutY="60.0" onAction="#nslookupButton" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
+                              <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
                            </children>
                         </AnchorPane>
                     </content>

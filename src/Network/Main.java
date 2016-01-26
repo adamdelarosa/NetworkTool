@@ -17,7 +17,7 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("NetWork Tool");
-        primaryStage.setScene(new Scene(root, 753, 378));
+        primaryStage.setScene(new Scene(root, 756, 420));
         primaryStage.show();
         primaryStage.setResizable(false);
     }
