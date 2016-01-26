@@ -9,7 +9,7 @@ public class Nslookup implements Runnable {
     @FXML
     private Controller textOutNslookup;
     private String nslookupInputCli, nslookupData, nslookupInput;
-    private Thread iThread, stopT;
+    private Thread iThread;
     private boolean shutdown = false;
 
 

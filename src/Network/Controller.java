@@ -1,8 +1,6 @@
 package Network;
 
 
-import javafx.animation.Animation;
-import javafx.animation.FadeTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,30 +8,25 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.util.Duration;
-import sun.font.TextLabel;
 
-
-import java.awt.*;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.net.URI;
-import java.util.Observable;
+
 
 public class Controller implements EventHandler<ActionEvent> {
 
     @FXML
-    public TextArea traceArea,whoTextArea,pingArea,nslookupArea;
+    public TextArea traceArea,whoTextArea,pingArea,nslookupArea,digArea;
     @FXML
-    public TextField traceField,whIpField,pingField,nslookupField;
+    public TextField traceField,whIpField,pingField,nslookupField,digField;
     @FXML
     public ProgressIndicator traceProgressBar,pingProgressBar;
     @FXML
-    public Button traceButtonOnAction,pingButtonOnAction,pingButtonStopOnAction,nslookupButtonOnAction;
+    public Button traceButtonOnAction,pingButtonOnAction,pingButtonStopOnAction,digButtonOnAction;
     @FXML
     public ComboBox <String>  whoBox;
 
@@ -41,6 +34,7 @@ public class Controller implements EventHandler<ActionEvent> {
     private ping pingCon;
     private Nslookup nslookupCon;
     private whoIs whoisCon;
+    private Dig digCon;
 
 
     public void handle(ActionEvent eventWhoIs) {}
@@ -140,6 +134,20 @@ public class Controller implements EventHandler<ActionEvent> {
         nslookupCon.killNslookup();
         nslookupArea.setText("");
     }
+
+    ////Dig////
+
+    public void digButton() throws IOException {
+        digField.setText("");
+        String text = digField.getText();
+        digCon = new Dig(this,this,this,true,text,this);
+        digCon.digAction(text);
+    }
+    public void digButtonStop() {
+        digCon.killDig();
+        digArea.setText("");
+    }
+
 
     ////WebSite Button www.adamdelarosa.com////
 
