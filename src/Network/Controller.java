@@ -22,11 +22,11 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     public TextArea traceArea,whoTextArea,pingArea,nslookupArea,digArea;
     @FXML
-    public TextField traceField,whIpField,pingField,nslookupField,digField;
+    public TextField traceField,whIpField,pingField,nslookupField,digField,digAskField;
     @FXML
     public ProgressIndicator traceProgressBar,pingProgressBar;
     @FXML
-    public Button traceButtonOnAction,pingButtonOnAction,pingButtonStopOnAction,digButtonOnAction;
+    public Button traceButtonOnAction,pingButtonOnAction,pingButtonStopOnAction,traceStopButtonOnAction,nslookupStopOnAction;
     @FXML
     public ComboBox <String>  whoBox;
 
@@ -98,7 +98,7 @@ public class Controller implements EventHandler<ActionEvent> {
     public void traceButton() {
         traceArea.setText("");
         String text = traceField.getText();
-        traceCon = new traceRoute(this,this,this,true,text);
+        traceCon = new traceRoute(this,this,this,true,text,this);
         traceCon.traceAction(text);
         System.out.print(text);
     }
@@ -107,7 +107,6 @@ public class Controller implements EventHandler<ActionEvent> {
     }
 
     ////Ping////
-
 
     public void pingButton() {
         pingArea.setText("");
@@ -127,7 +126,7 @@ public class Controller implements EventHandler<ActionEvent> {
     public void nslookupButton() throws IOException {
         nslookupArea.setText("");
         String text = nslookupField.getText();
-        nslookupCon = new Nslookup(this,true,text);
+        nslookupCon = new Nslookup(this,true,this);
         nslookupCon.nslookupAction(text);
     }
     public void nslookupButtonStop(){
@@ -138,10 +137,11 @@ public class Controller implements EventHandler<ActionEvent> {
     ////Dig////
 
     public void digButton() throws IOException {
-        digField.setText("");
+        digArea.setText("");
         String text = digField.getText();
-        digCon = new Dig(this,this,this,true,text,this);
-        digCon.digAction(text);
+        String digAskText = digAskField.getText();
+        digCon = new Dig(this,true,text);
+        digCon.digAction(text,digAskText);
     }
     public void digButtonStop() {
         digCon.killDig();

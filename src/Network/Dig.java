@@ -1,46 +1,41 @@
 package Network;
 
 import javafx.fxml.FXML;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Dig implements Runnable {
 
     @FXML
-    private Controller textOutDig, digButt, digBar,digStopOnAction;
-    private String digInputCli, digData, digInput;
+    private Controller textOutDig;
+    private String digInputCli,digData,digInput,digAskInput;
     private Thread iThread;
     private boolean shutdown = false;
 
 
-    public Dig(Controller tadig, Controller buttdig, Controller bardig, Boolean stopdig, String dataDig,Controller digstoponaction) {
+    public Dig(Controller tadig,Boolean stopdig,String dataDig) {
         textOutDig = tadig;
-        digButt = buttdig;
-        digBar = bardig;
         shutdown = stopdig;
         digData = dataDig;
-        digStopOnAction = digstoponaction;
 
     }
 
-    public void digAction(String text) {
-        digInput = text;
-        iThread = new Thread(this);
-        iThread.start();
-
+    public void digAction(String text,String digAskText) {
         if (digData != null && digData.isEmpty()) {
             textOutDig.digArea.setText("Insert IP Address / URL Address.");
         } else {
             digInput = text;
+            digAskInput = digAskText;
             iThread = new Thread(this);
             iThread.start();
-
 
         }
     }
 
     public void killDig() {
         if (iThread == null) {
+
             return;
         } else {
             shutdown = false;
@@ -51,23 +46,19 @@ public class Dig implements Runnable {
     public void run() {
         try {
 
+System.out.print("dig " + digInput + " " + digAskInput);
 
             Runtime r = Runtime.getRuntime();
-            Process runningProcess = r.exec("dig " + digInput);
+            Process runningProcess = r.exec("dig " + digInput + " " + digAskInput);
             BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
 
             while (shutdown && (digInputCli = in.readLine()) != null) {
-
                 textOutDig.digArea.appendText(digInputCli + "\n");
-                digButt.digButtonOnAction.setDisable(true);
             }
-
-            digButt.digButtonOnAction.setDisable(false);
             in.close();
         } catch (Exception e) {
         }
     }
-
 }
 
 
