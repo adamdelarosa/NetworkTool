@@ -20,9 +20,9 @@ import java.net.URI;
 public class Controller implements EventHandler<ActionEvent> {
 
     @FXML
-    public TextArea traceArea,whoTextArea,pingArea,nslookupArea,digArea;
+    public TextArea traceArea,whoTextArea,pingArea,nslookupArea,digArea,hostArea,cardArea;
     @FXML
-    public TextField traceField,whIpField,pingField,nslookupField,digField,digAskField;
+    public TextField traceField,whIpField,pingField,nslookupField,digField,digAskField,hostField,hostAskField;
     @FXML
     public ProgressIndicator traceProgressBar,pingProgressBar;
     @FXML
@@ -35,6 +35,9 @@ public class Controller implements EventHandler<ActionEvent> {
     private Nslookup nslookupCon;
     private whoIs whoisCon;
     private Dig digCon;
+    private Host hostCon;
+    private NetworkCard cardCon;
+
 
 
     public void handle(ActionEvent eventWhoIs) {}
@@ -123,7 +126,7 @@ public class Controller implements EventHandler<ActionEvent> {
 
     ////Nslookup////
 
-    public void nslookupButton() throws IOException {
+    public void nslookupButton(){
         nslookupArea.setText("");
         String text = nslookupField.getText();
         nslookupCon = new Nslookup(this,true,this);
@@ -136,17 +139,46 @@ public class Controller implements EventHandler<ActionEvent> {
 
     ////Dig////
 
-    public void digButton() throws IOException {
+    public void digButton() {
         digArea.setText("");
         String text = digField.getText();
         String digAskText = digAskField.getText();
         digCon = new Dig(this,true,text);
-        digCon.digAction(text,digAskText);
+        digCon.digAction(text, digAskText);
     }
     public void digButtonStop() {
         digCon.killDig();
         digArea.setText("");
     }
+
+    ////Host////
+
+    public void hostButton() {
+        hostArea.setText("");
+        String text = hostField.getText();
+        String hostAskText = hostAskField.getText();
+        hostCon = new Host(this,true,text);
+        hostCon.hostAction(text, hostAskText);
+    }
+    public void hostButtonStop() {
+        hostCon.killHost();
+        hostArea.setText("");
+    }
+
+    ////Network Card////
+
+    public void CardButton() {
+        cardArea.setText("");
+        cardCon = new NetworkCard(this,true);
+        cardCon.cardAction();
+    }
+    public void cardButtonStop() {
+        cardCon.killCard();
+        cardArea.setText("");
+    }
+
+
+
 
 
     ////WebSite Button www.adamdelarosa.com////

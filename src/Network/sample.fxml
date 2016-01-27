@@ -129,7 +129,41 @@
                            </children></AnchorPane>
                     </content>
                   </Tab>
-                  <Tab text="Lookup" />
+                  <Tab text=" Host  ">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="603.0" layoutY="65.0" prefHeight="16.0" prefWidth="31.0" text="Ask:" />
+                              <TextField fx:id="hostAskField" layoutX="637.0" layoutY="60.0" onAction="#hostButton" prefHeight="26.0" prefWidth="96.0" promptText="Default" />
+                              <Button layoutX="462.0" layoutY="60.0" mnemonicParsing="false" onAction="#hostButtonStop" prefHeight="26.0" prefWidth="133.0" text="Clear" />
+                              <Button layoutX="320.0" layoutY="60.0" mnemonicParsing="false" onAction="#hostButton" prefHeight="26.0" prefWidth="133.0" text="Host" />
+                              <Label layoutX="16.0" layoutY="13.0" prefHeight="43.0" prefWidth="167.0" text="Host">
+                                 <font>
+                                    <Font name="Avenir Roman" size="29.0" />
+                                 </font>
+                              </Label>
+                              <TextArea fx:id="hostArea" editable="false" layoutX="4.0" layoutY="108.0" prefHeight="229.0" prefWidth="746.0" />
+                              <TextField fx:id="hostField" layoutX="109.0" layoutY="60.0" onAction="#hostButton" prefHeight="26.0" prefWidth="196.0" promptText="www.example.com" />
+                              <Label layoutX="14.0" layoutY="65.0" prefHeight="16.0" prefWidth="92.0" text="Address or IP:" />
+                           </children>
+                        </AnchorPane>
+                     </content></Tab>
+                  <Tab text="Network Cards">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TextArea fx:id="cardArea" editable="false" layoutX="4.0" layoutY="108.0" prefHeight="229.0" prefWidth="746.0" />
+                              <Label layoutX="16.0" layoutY="13.0" prefHeight="43.0" prefWidth="220.0" text="Network Cards">
+                                 <font>
+                                    <Font name="Avenir Roman" size="29.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="14.0" layoutY="60.0" mnemonicParsing="false" onAction="#CardButton" prefHeight="26.0" prefWidth="228.0" text="Show Network Cards" />
+                              <Button layoutX="260.0" layoutY="60.0" mnemonicParsing="false" onAction="#cardButtonStop" prefHeight="26.0" prefWidth="133.0" text="Clear" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
               </tabs>
             </TabPane>
             <Label layoutX="59.0" layoutY="-7.0" prefHeight="44.0" prefWidth="272.0" text="Network Tool">
