@@ -1,5 +1,6 @@
 package Network;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 import java.io.BufferedReader;
@@ -44,22 +45,22 @@ public class Dig implements Runnable {
 
     @Override
     public void run() {
-        try {
+        Platform.runLater(() -> {
+            try {
 
-System.out.print("dig " + digInput + " " + digAskInput);
+                Runtime r = Runtime.getRuntime();
+                Process runningProcess = r.exec("dig " + digInput + " " + digAskInput);
+                BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
 
-            Runtime r = Runtime.getRuntime();
-            Process runningProcess = r.exec("dig " + digInput + " " + digAskInput);
-            BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
-
-            while (shutdown && (digInputCli = in.readLine()) != null) {
-                textOutDig.digArea.appendText(digInputCli + "\n");
+                while (shutdown && (digInputCli = in.readLine()) != null) {
+                    textOutDig.digArea.appendText(digInputCli + "\n");
+                }
+                in.close();
+            } catch (Exception e) {
             }
-            in.close();
-        } catch (Exception e) {
-        }
+        });
     }
-}
+    }
 
 
 

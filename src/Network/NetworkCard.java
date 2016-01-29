@@ -1,5 +1,6 @@
 package Network;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 import java.io.BufferedReader;
@@ -36,19 +37,21 @@ public class NetworkCard implements Runnable {
 
     @Override
     public void run() {
-        try {
+        Platform.runLater(() -> {
+            try {
 
 
-            Runtime r = Runtime.getRuntime();
-            Process runningProcess = r.exec("ifconfig -a");
-            BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
+                Runtime r = Runtime.getRuntime();
+                Process runningProcess = r.exec("ifconfig -a");
+                BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));
 
-            while (shutdown && (cardInputCli = in.readLine()) != null) {
-                textOutCard.cardArea.appendText(cardInputCli + "\n");
+                while (shutdown && (cardInputCli = in.readLine()) != null) {
+                    textOutCard.cardArea.appendText(cardInputCli + "\n");
+                }
+                in.close();
+            } catch (Exception e) {
             }
-            in.close();
-        } catch (Exception e) {
-        }
+        });
     }
 }
 
