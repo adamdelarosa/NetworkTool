@@ -24,7 +24,7 @@ public class Controller implements EventHandler<ActionEvent> {
     @FXML
     public TextField traceField,whIpField,pingField,nslookupField,digField,digAskField,hostField,hostAskField;
     @FXML
-    public ProgressIndicator traceProgressBar,pingProgressBar;
+    public ProgressIndicator traceProgressBar,pingProgressBar,netstatProgressBar;
     @FXML
     public Button traceButtonOnAction,pingButtonOnAction,pingButtonStopOnAction,traceStopButtonOnAction,nslookupStopOnAction;
     @FXML
@@ -176,8 +176,6 @@ public class Controller implements EventHandler<ActionEvent> {
         cardCon.killCard();
         cardArea.setText("");
     }
-
-
 
 
 
