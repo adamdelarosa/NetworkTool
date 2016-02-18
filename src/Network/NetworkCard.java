@@ -39,8 +39,6 @@ public class NetworkCard implements Runnable {
     public void run() {
         Platform.runLater(() -> {
             try {
-
-
                 Runtime r = Runtime.getRuntime();
                 Process runningProcess = r.exec("ifconfig -a");
                 BufferedReader in = new BufferedReader(new InputStreamReader(runningProcess.getInputStream()));

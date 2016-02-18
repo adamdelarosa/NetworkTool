@@ -17,24 +17,28 @@
   
   <path id="network.module.production.classpath">
     <path refid="${module.jdk.classpath.network}"/>
-    <pathelement location="/API/commons-net-1.4.1.jar"/>
+    <pathelement location="${basedir}/src/API/commons-net-1.4.1.jar"/>
+    <pathelement location="${basedir}/src/API/org.nmap4j-1.1.0.jar"/>
   </path>
   
   <path id="network.runtime.production.module.classpath">
     <pathelement location="${network.output.dir}"/>
-    <pathelement location="/API/commons-net-1.4.1.jar"/>
+    <pathelement location="${basedir}/src/API/commons-net-1.4.1.jar"/>
+    <pathelement location="${basedir}/src/API/org.nmap4j-1.1.0.jar"/>
   </path>
   
   <path id="network.module.classpath">
     <path refid="${module.jdk.classpath.network}"/>
     <pathelement location="${network.output.dir}"/>
-    <pathelement location="/API/commons-net-1.4.1.jar"/>
+    <pathelement location="${basedir}/src/API/commons-net-1.4.1.jar"/>
+    <pathelement location="${basedir}/src/API/org.nmap4j-1.1.0.jar"/>
   </path>
   
   <path id="network.runtime.module.classpath">
     <pathelement location="${network.testoutput.dir}"/>
     <pathelement location="${network.output.dir}"/>
-    <pathelement location="/API/commons-net-1.4.1.jar"/>
+    <pathelement location="${basedir}/src/API/commons-net-1.4.1.jar"/>
+    <pathelement location="${basedir}/src/API/org.nmap4j-1.1.0.jar"/>
   </path>
   
   

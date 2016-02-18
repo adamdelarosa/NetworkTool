@@ -95,6 +95,9 @@
   <property name="project.jdk.home" value="${jdk.home.1.8}"/>
   <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
   <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
   <!-- Register Custom Compiler Taskdefs -->
   <property name="javac2.home" value="${idea.home}/lib"/>
   <path id="javac2.classpath">
@@ -116,55 +119,32 @@
     <!-- Perform any build initialization in this target -->
   </target>
   
-  <target name="clean" depends="clean.module.network, clean.artifact.javafxapp" description="cleanup all"/>
+  <target name="clean" depends="clean.module.network" description="cleanup all"/>
   
   <target name="build.modules" depends="init, clean, compile.module.network" description="build all modules"/>
   
   <target name="init.artifacts">
     <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
-    <property name="artifact.output.javafxapp" value="${basedir}/out/artifacts/JavaFXApp"/>
+    <property name="artifact.output.network:jar" value="${basedir}/../../../Desktop/ewew/090"/>
     <mkdir dir="${artifacts.temp.dir}"/>
-    <property name="artifact.temp.output.JavaFXApp" value="${artifacts.temp.dir}/JavaFXApp.jar"/>
-    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="${jdk.home.1.8}/lib/ant-javafx.jar"/>
+    <property name="temp.jar.path.network.jar" value="${artifacts.temp.dir}/network.jar"/>
   </target>
   
-  <target name="clean.artifact.javafxapp" description="clean JavaFXApp artifact output">
-    <delete dir="${artifact.output.javafxapp}"/>
+  <target name="artifact.network:jar" depends="init.artifacts, compile.module.network" description="Build &#39;network:jar&#39; artifact">
+    <property name="artifact.temp.output.network:jar" value="${artifacts.temp.dir}/network_jar"/>
+    <mkdir dir="${artifact.temp.output.network:jar}"/>
+    <jar destfile="${temp.jar.path.network.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${network.output.dir}"/>
+      <zipfileset src="${basedir}/src/API/commons-net-1.4.1.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.network.jar}" tofile="${artifact.temp.output.network:jar}/network.jar"/>
   </target>
   
-  <target name="artifact.javafxapp" depends="init.artifacts, compile.module.network" description="Build &#39;JavaFXApp&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
-    <mkdir dir="${artifact.output.javafxapp}"/>
-    <copy todir="${artifact.temp.output.JavaFXApp}">
-      <fileset dir="${network.output.dir}"/>
+  <target name="build.all.artifacts" depends="artifact.network:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.network:jar}"/>
+    <copy todir="${artifact.output.network:jar}">
+      <fileset dir="${artifact.temp.output.network:jar}"/>
     </copy>
-    <fx:fileset id="all_but_JavaFXApp" dir="${artifact.temp.output.JavaFXApp}" includes="**/*.jar">
-      <exclude name="JavaFXApp.jar"/>
-    </fx:fileset>
-    <fx:fileset id="all_JavaFXApp" dir="${artifact.temp.output.JavaFXApp}" includes="**/*.jar"/>
-    <fx:application id="JavaFXApp_id" name="JavaFXApp" mainClass="Network.Main"/>
-    <fx:jar destfile="${artifact.temp.output.JavaFXApp}/JavaFXApp.jar">
-      <fx:application refid="JavaFXApp_id"/>
-      <fileset dir="${artifact.temp.output.JavaFXApp}" excludes="**/*.jar"/>
-      <fx:resources>
-        <fx:fileset refid="all_but_JavaFXApp"/>
-      </fx:resources>
-      <manifest/>
-    </fx:jar>
-    <fx:deploy width="600" height="400" updatemode="background" outdir="${artifact.temp.output.JavaFXApp}/deploy" outfile="JavaFXApp">
-      <fx:application refid="JavaFXApp_id"/>
-      <fx:resources>
-        <fx:fileset refid="all_JavaFXApp"/>
-      </fx:resources>
-    </fx:deploy>
-    <copy todir="${artifact.output.javafxapp}">
-      <fileset dir="${artifact.temp.output.JavaFXApp}/deploy"/>
-    </copy>
-    <delete includeemptydirs="true">
-      <fileset dir="${artifact.temp.output.JavaFXApp}"/>
-    </delete>
-  </target>
-  
-  <target name="build.all.artifacts" depends="artifact.javafxapp" description="Build all artifacts">
     
     <!-- Delete temporary files -->
     <delete dir="${artifacts.temp.dir}"/>
