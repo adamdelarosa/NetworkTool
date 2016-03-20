@@ -42,6 +42,7 @@ public class ping implements Runnable {
 
     public void killPing() {
         if (iThread == null) {
+            //System.out.println("NO need for Thread to run.");
             return;
         } else {
             shutdown = false;
